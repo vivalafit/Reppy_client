@@ -1,0 +1,107 @@
+<div *ngIf="user" class="edit-profile-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="edit-group">
+          <form class="registration-form" [formGroup]="editUserForm" novalidate >
+            <div class="form-group">
+              <label for="name">Имя</label>
+              <input type="text" id="name" value="{{user?.name}}" [ngClass]="{inputError: editUserForm.controls['name'].invalid && editUserForm.controls['name'].touched}" formControlName="name">
+              <div class="alert-wrapper">
+                <div class="alert alert-danger"
+                     *ngIf="editUserForm.controls['name'].touched || editUserForm.controls['name'].invalid">
+                  Отсутствует или некоректное имя
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Фамилия</label>
+              <input type="text" id="lastName" value="{{user.lastName}}" [ngClass]="{inputError: editUserForm.controls['lastName'].invalid && editUserForm.controls['lastName'].touched}"  formControlName="lastName"/>
+              <div class="alert-wrapper">
+                <div class="alert alert-danger"
+                     *ngIf="editUserForm.controls['lastName'].touched || editUserForm.controls['lastName'].invalid">
+                  Отсутствует или некоректная фамилия
+                </div>
+              </div>
+            </div>
+            <div class="form-group categories">
+                <label>Выберите категории : </label>
+                  <div class="categoryList">
+                     <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event)">{{category}}<i class="icon ion-md-close"></i></div>
+                  </div>
+                <select  name="categoryId" #selection formControlName="categoryId" class="form-control" [(ngModel)]="catPrev" (change)="multiplyCategory($event, selection.options[selection.options.selectedIndex].text)">
+                    <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+                </select>
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger"
+                         *ngIf="(catString == null || catString == '') && editUserForm.controls['categoryId'].touched">
+                        Нужно выбрать хотя бы одну категорию
+                    </div>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<label for="email">Email</label>-->
+              <!--<input type="email" id="email" value="{{user.email}}" [ngClass]="{inputError: editUserForm.controls['email'].invalid && editUserForm.controls['email'].touched}"  formControlName="email">-->
+              <!--<div class="alert-wrapper">-->
+                <!--<div class="alert alert-danger"-->
+                     <!--*ngIf="editUserForm.controls['email'].invalid && editUserForm.controls['email'].touched">-->
+                  <!--Некоректен или отсутствует email-->
+                <!--</div>-->
+              <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<label for="tel">Телефон</label>-->
+              <!--<input type="tel" id="tel" value="{{user.tel}}" [ngClass]="{inputError: editUserForm.controls['tel'].invalid && editUserForm.controls['tel'].touched}"  formControlName="tel" formControlName="tel">-->
+              <!--<div class="alert-wrapper">-->
+                <!--<div class="alert alert-danger"-->
+                     <!--*ngIf="editUserForm.controls['tel'].invalid && editUserForm.controls['tel'].touched">-->
+                  <!--Отсутствует или некоректный телефон-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+              <label>Локация</label>
+              <select class="form-control" name="location" formControlName="city" [(ngModel)]="locSelected">
+                <option *ngFor="let location of locations" [value]="location.id">{{location.city}}</option>
+              </select>
+              <div class="alert-wrapper">
+                <div class="alert alert-danger"
+                     *ngIf="editUserForm.controls['city'].invalid && editUserForm.controls['city'].touched">
+                  cityError
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div class="form-group photos">
+              <label>Ваше фото : </label>
+              <div class="fileblocks">
+                <div class="file_upload">
+                  <button mat-raised-button  (click)="fileUpload2.click()"><p>Выбрать<br/> файл</p> <i class="icon ion-md-camera"></i></button>
+                  <!-- <input  class="fakeinput form-control" name="photo"  [(ngModel)]="photoName2"/> -->
+                  <input #fileUpload2 type='file' name="fileUpload2"  formControlName="photo" (change)="readUrl($event,fileUpload2,photo)">
+                  <img #photo name="photo" [src]="photoUrl2" [ngClass]="{photoLayer: visibility}" ngDefaultControl>
+                  <img  class="test" #photo name="photo" [src]="user?.avatar ? (env.api + formatPath(user.avatar[0].path)) : ('../assets/Images/default-user.png')" [ngClass]="{photoLayer: visibility}" ngDefaultControl>
+                  <!-- <label class="remove-photo" (click)="removeFile(photo,fileUpload2)">❌</label> -->
+                </div>
+              </div>
+              <div class="alert-wrapper">
+                <div class="alert alert-danger"
+                     *ngIf="editUserForm.controls['photo'].invalid && editUserForm.controls['photo'].touched">
+                  photoError
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div class="form-button-wrapper">
+              <button class="form-button"  type="submit" [disabled]=" (editUserForm.controls['lastName'].touched || editUserForm.controls['name'].invalid) ||(editUserForm.controls['lastName'].touched || editUserForm.controls['lastName'].invalid )|| ((catString == null || catString == '') && editUserForm.controls['categoryId'].touched) || (editUserForm.controls['city'].invalid && editUserForm.controls['city'].touched)" (click)="saveUser()">Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

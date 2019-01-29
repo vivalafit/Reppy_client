@@ -1,0 +1,51 @@
+@import '../../../sass-utilities/_variables'
+
+.advertisement-wrap
+  display: flex !important
+  justify-content: center
+  margin-top: 40px
+.advert
+  background-color: $block-background
+  border: 3px solid $violet-border
+  position: fixed
+  height: 450px
+  margin-left: auto
+  margin-right: auto
+  text-align: center
+  width: 270px
+  text-align: center
+
+div
+  h3
+    font-family: 'Pacifico'
+    font-size: 24px
+    margin-top: 25px
+    color: black
+    span
+      color: $blue
+  .advert-desc
+    color: $grey
+    margin-top: 40px
+    padding: 0 40px
+    line-height: 2
+  i
+    font-size: 270px
+    position: relative
+    color: $blue
+    top: 0
+
+@media only screen and (min-width : 992px) and (max-width : 1200px)
+    div
+      h3
+        font-family: 'Pacifico'
+        font-size: 24px
+        margin-top: 25px
+        color: black
+        span
+          color: $blue
+      .advert-desc
+        margin-top: 46px
+        padding: 0 40px
+        line-height: 1.6
+      i
+        top: 10px

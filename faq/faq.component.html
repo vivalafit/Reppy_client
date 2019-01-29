@@ -1,0 +1,32 @@
+<div class="faq" >
+  <div class="row">
+    <h4>Помощь Reppy</h4>
+  </div>
+  <div class="search-wrapper">
+    <!-- <input class="search-faq" type="text" [attr.placeholder]="placeholder" [(ngModel)]="search" (keyup)="onChange($event)"
+      (focus)="onFocus()" (blur)="onBlur()" class="search-input"> -->
+      <div class="search-wrapper">
+          <input type="text" [attr.placeholder]="placeholder" [(ngModel)]="search" (focus)="onFocus()" class="search-input"><button class="search-button"><i class="icon ion-md-search"></i></button>
+      </div>
+    <div class="results-wrapper q-a" *ngIf="inputActive && search !== undefined && search !=='' && showFaqs().length">
+      <ul>
+          <li (click)="onClick(faq)" *ngFor="let faq of showFaqs()">
+              <a>{{faq.question}}</a>
+              <div class="description" [ngClass]="{'hidden': !faq.showDesc}">
+                {{faq.answer}}
+              </div>
+          </li>
+      </ul>
+    </div>
+    <div class="q-a" *ngIf="showAll || search == undefined || search == ''">
+      <ul>
+        <li (click)="onClick(faq)" *ngFor="let faq of faqs">
+            <a>{{faq.question}}</a>
+            <div class="description" [ngClass]="{'hidden': !faq.showDesc}">
+              {{faq.answer}}
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="pie-wrapper">
+        <figure>
+            <svg attr.width.px="{{size}}" attr.height.px="{{size}}" class="chart">
+                <circle
+                        attr.r="{{size * 0.25}}"
+                        attr.cx="{{size * 0.5}}"
+                        attr.cy="{{size * 0.5}}"
+                        [ngStyle]="{'strokeWidth': size * 0.5, 'strokeDasharray': strokeDasharray}"
+                        class="pie"/>
+            </svg>
+        </figure>
+    <div class="img-back" [ngStyle]="{'height.px': size * 0.9, 'width.px': size * 0.9}">
+        <div class="label-wrapper" [ngStyle]="{'paddingTop.px': size * 0.2}" *ngIf="!url">
+            <span [ngStyle]="{'fontSize.px': size * 0.24}">{{percentage}}%</span>
+            <div [ngStyle]="{'marginTop.px': reppyMargin}" class="logo"><letter-color [size]="size * 0.15" word="Reppy"></letter-color><letter-color [size]="size * 0.15" word="Rate"></letter-color></div>
+        </div>
+    </div>
+    <img *ngIf="url" attr.src="{{url}}" attr.alt="{{alt}}" attr.height="{{size * 0.9}}" attr.width="{{size * 0.9}}" class="pie-avatar">
+</div>

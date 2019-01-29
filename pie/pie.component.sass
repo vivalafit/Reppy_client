@@ -1,0 +1,38 @@
+@import '../../../sass-utilities/animations'
+@import '../../../sass-utilities/variables'
+
+.pie-wrapper
+  position: relative
+  display: inline-block
+  circle
+    fill: $grey-disabled
+    stroke: $blue
+    transition: stroke-dasharray .5s ease
+  svg
+    margin: 0 auto
+    transform: rotate(-90deg)
+    background: $grey-disabled
+    border-radius: 50%
+    display: block
+  .img-back
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    margin: auto
+    background-color: $block-background
+    border-radius: 100%
+  .pie-avatar
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    margin: auto
+    animation: .5s fadeIn
+    border-radius: 50%
+  .label-wrapper
+    text-align: center
+    span
+      color: $blue

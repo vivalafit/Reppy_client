@@ -1,0 +1,15 @@
+<div class="category-filter">
+    <div *ngIf="!counterHidden && foundLength > 1 && mode == 'freelancers'" class="head" ><span class="accent">{{foundLength}}</span> специалистов в данной категории</div>
+    <div *ngIf="!counterHidden && foundLength > 1 && mode == 'posts'" class="head" ><span class="accent">{{foundLength}}</span> объявлений в данной категории</div>
+    <div *ngIf="!counterHidden && foundLength == 1 && mode == 'freelancers'" class="head" ><span class="accent">{{foundLength}}</span> специалист в данной категории</div>
+    <div *ngIf="!counterHidden && foundLength == 1 && mode == 'posts'" class="head" ><span class="accent">{{foundLength}}</span> объявление в данной категории</div>
+    <div *ngIf="counterHidden && mode == 'freelancers'" class="head"><span class="accent">{{foundLength}}</span> всех специалистов</div>
+    <div *ngIf="counterHidden && mode == 'posts'" class="head"><span class="accent">{{foundLength}}</span> всех объявлений</div>
+    <span>КАТЕГОРИИ:</span>
+    <ul>
+        <span>ВСЕ УСЛУГИ</span>
+        <li *ngFor = 'let cat of categories' (click) = "chooseCategory(cat)">
+            {{cat.title}}
+            <i class="icon ion-md-arrow-dropdown" [hidden] = "!hidden[cat.id]" ></i></li>
+    </ul>
+</div>

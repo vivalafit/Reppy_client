@@ -1,0 +1,38 @@
+<div class="dashboard-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="reviews-wrapper">
+                                <letter-color [size]="24" [word]="user.name" *ngIf="user?.name"></letter-color>
+                                <letter-color [size]="24" [word]="user.lastName" *ngIf="user?.lastName"></letter-color>
+                                <a class="edit-prof" routerLink="/edit-profile">Редактировать</a>
+                                <div class="switch-wrapper">
+                                    <div class="hire" [ngClass]="{'hire': true, 'accent': mode === 'c'}">Заказчик</div>
+                                    <ngx-switch  [left]="mode === 'c'" (onSwitch)="setMode($event)"></ngx-switch>
+                                    <div class="work" [ngClass]="{'work': true, 'accent': mode === 'f'}">Исполнитель</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="reppy-rate-wrapper" *ngIf="user.rating || user.rating == 0">
+                                <ngx-pie [percentage]="user?.rating" [size]="180" [reppyMargin]="0"></ngx-pie>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="mode === 'c'; else elseBlock">
+                        <app-customer></app-customer>
+                    </div>
+                    <ng-template #elseBlock>
+                        <app-freelancer></app-freelancer>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,137 @@
+<div>
+    <div class="reg-for-legal">
+        <div class="head">
+            <h2>
+                <letter-color word="РЕГИСТРАЦИЯ"></letter-color>
+            </h2>
+            <h6>(юридические лица)</h6>
+        </div>
+        <form [formGroup]="registrationForm" novalidate>
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Название вашей компании" [ngClass]="{inputError: registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched}"
+                    formControlName="name" class="name">
+                <div class="alert-wrapper">
+                      <div class="alert alert-danger"
+                           *ngIf="registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched">
+                            Отсутствует или некоректное название компании
+                      </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" id="email" placeholder="Введите емейл компании" [ngClass]="{inputError: registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched}"
+                    formControlName="email" class="email">
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger" *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
+                        Отсутствует или некоректная электронная почта
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" id="age" placeholder="Лет на рынке" [ngClass]="{inputError: registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched}"
+                    formControlName="age" class="age">
+                <input type="text" id="employeeCount" placeholder="К-во сотрудников" [ngClass]="{inputError: registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched}"
+                    formControlName="employeeCount" class="employeeCount">
+                    <div class="alert-wrapper">
+                              <div class="alert alert-danger"
+                                   *ngIf="registrationForm.controls['age'].invalid && registrationForm.controls['age'].touched">
+                                    Неккоректное значение возраста компании
+                              </div>
+                              <div class="alert alert-danger"
+                                   *ngIf="registrationForm.controls['employeeCount'].invalid && registrationForm.controls['employeeCount'].touched">
+                                    Неккоректное значение кол-ва Сотрудников
+                              </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="specialization" formControlName="specialization">
+                    <option value="" disabled selected hidden>Специализация деятельности</option>
+                    <option [value]="1">Строительство зданий</option>
+                    <option [value]="2">Строительство сооружений</option>
+                    <option [value]="3">Специализированные строительные работы</option>
+                </select>
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger" *ngIf="registrationForm.controls['specialization'].invalid && registrationForm.controls['specialization'].touched">
+                        Необходимо выбрать специализацию
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="tel" placeholder="Телефон" [ngClass]="{inputError: registrationForm.controls['tel'].invalid && registrationForm.controls['tel'].touched}"
+                    formControlName="tel" formControlName="tel">
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger" *ngIf="registrationForm.controls['tel'].invalid && registrationForm.controls['tel'].touched">
+                        Телефон слишком короткий (надо вводить вместе с кодом оператора)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Пароль" [ngClass]="{inputError: registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched}"
+                    formControlName="password">
+                <div class="alert alert-danger" *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched">
+                    Пароль должен быть от 11 символов и содержать хотя бы 1 цифру
+                </div>
+            </div>
+
+            <div class="form-group cat">
+                <div class="categoryList">
+                    <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event)">{{category}}<i
+                            class="icon ion-md-close"></i></div>
+                </div>
+                <select name="categoryId" #selection formControlName="categoryId" class="form-control" (change)="multiplyCategory($event, selection.options[selection.options.selectedIndex].text)">
+                    <option value="" disabled selected hidden>Выберите категории работ</option>
+                    <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+                </select>
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger" *ngIf="(catString == null || catString == '') && registrationForm.controls['categoryId'].touched">
+                        Нужно выбрать хотя бы одну категорию
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="location" formControlName="cityId">
+                    <option value="" disabled selected hidden>Выберите город</option>
+                    <option *ngFor="let location of locations" [value]="location.id">{{location.city}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls['cityId'].invalid && registrationForm.controls['cityId'].touched">
+                    Необходимо выбрать город
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="taxSystem" formControlName="taxSystem">
+                    <option value="" disabled selected hidden>Система налогообложения</option>
+                    <option [value]="1">Общая система</option>
+                    <option [value]="2">Упрощенная система</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls['taxSystem'].invalid && registrationForm.controls['taxSystem'].touched">
+                    Необходимо выбрать систему налогообложения
+                </div>
+            </div>
+            <div class="form-group submit">
+                <select class="form-control" name="vat" formControlName="vat">
+                    <option value="" disabled selected hidden>НДС / Без НДС</option>
+                    <option [value]="0">НДС</option>
+                    <option [value]="1">Без НДС</option>
+                </select>
+                <button class="form-button" (click)="registerCompany()" type="submit">Зарегистрировать Компанию</button>
+            </div>
+            <div class="form-group" *ngIf="registrationForm.controls['vat'].invalid && registrationForm.controls['vat'].touched">
+                <div class="alert alert-danger">
+                    Необходимо выбрать условия НДС
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="dot-up"></div>
+    <div class="dot-down"></div>
+    <div class="up-desk">
+        <p>
+            Выберите нишу своей деятельности соответственно основным КВЭДам вашей компании
+        </p>
+    </div>
+    <div class="down-desk">
+        <p>
+            Люди, которые захотят с Вами сотрудничать, захотят видеть абсолютно все детали Вашей деятельности.
+            Не ленитесь указать все детали!
+        </p>
+    </div>
+</div>

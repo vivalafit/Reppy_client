@@ -1,0 +1,14 @@
+<div *ngIf="mode === 'c'" class="wrapper">
+  <div class="post-wrap"  *ngFor="let post of completedNew">
+      <ngx-pie [url]="post?.executor.avatar ? (env.api + formatPath(post.executor.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="40" [percentage]="post?.executor?.rating"></ngx-pie>
+      <div class="desc"> <strong>{{post.executor.name}}</strong> закончил задачу : {{post.title}}   <hr></div>
+       <button  type="button" [routerLink]="['/dashboard']" > Посмотреть </button>
+    </div>
+</div>
+<div *ngIf="mode === 'f'" class="wrapper">
+  <div class="post-wrap"  *ngFor="let post of requestAproved">
+   <ngx-pie [url]="post?.customer.avatar ? (env.api + formatPath(post.customer.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="40" [percentage]="post?.executor?.rating"></ngx-pie>
+      <div class="desc"> <strong>{{post.customer.name}}</strong> принял Вашу заявку : {{post.title}}   <hr></div>
+       <button  type="button" [routerLink]="['/dashboard']" > Посмотреть </button>
+    </div>
+</div>

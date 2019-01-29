@@ -1,0 +1,83 @@
+@import '../../../sass-utilities/variables'
+@import '../../../sass-utilities/animations'
+
+
+header
+  position: fixed
+  top: 0
+  width: 100%
+  display: flex
+  background: $block-background
+  height: 60px
+  padding: 0 25px
+  box-sizing: border-box
+  box-shadow: $box-shadow-down
+  z-index: 99999
+  .left-side
+    display: flex
+    width: 33%
+    padding-top: 10px
+    button.freelancers
+      height: 36px
+      position: absolute
+      right: 5px
+      top: 12px
+    .logo
+      cursor: pointer
+      background: url(/assets/Images/logo.png) center no-repeat
+      background-size: cover
+      height: 25px
+      width: 100px
+      margin-top: 7px
+    ngx-search
+      margin-top: 10px
+      margin-left: 20px
+  .right-side
+    display: flex
+    width: 33%
+    align-items: center
+    justify-content: flex-end
+    button.posts
+      position: absolute
+      left: 5px
+    .name-wrapper
+      position: relative
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      padding-right: 20px
+      letter-color
+        margin-right: 5px
+    button
+      animation: .5s fadeIn
+      margin-right: 15px
+    button.login
+      margin-right: 20px
+      background: transparent
+      color: grey
+
+    .messanger
+      margin-right: 20px
+      position: relative
+      p.notificationCounter
+          position: absolute
+          font-size: 11px
+          right: -1px
+          top: -2px
+          color: white
+          background-color: $blue
+          border-radius: 100px
+          padding: 2px
+          z-index: 5
+    .helper, .messanger
+      cursor: pointer
+      i
+        font-size: 30px
+        color: $grey-disabled
+        transition: .3s ease
+      i:hover
+        color: $blue
+      i:active
+        color: $blue
+        opacity: .5

@@ -1,0 +1,609 @@
+<div class="body container-fluid" (window:resize)="changeAvatarSize()">
+  <div *ngIf = "initWidth <= 768 || initWidth > 1024" class="row">
+    <div class="col-lg-2">
+
+      <div *ngIf="initWidth > 768" class="advice" id="first-left">
+          <p>Чем больше информации Вы
+укажите в Вашем обьявлении, тем больше вероятность того, что обьявление будет в ТОП рейтингах и Вы очень быстро найдете нужного Вам мастера.
+         </p>
+           <img src="../assets/Images/dotted-line.png" alt="Smiley face" height="42" width="42">
+        </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="post-create-form">
+        <div class="container-fluid">
+            <div class="form-header">
+              <div class="row justify-content-center">
+                  <div class="col text-center">
+                      <i *ngIf="initWidth <= 768" (click)="showCreate = !showCreate" class="icon ion-md-information-circle-outline"></i>
+                      <h3 *ngIf="initWidth > 768"  class="create">СОЗДАТЬ ОБЬЯВЛЕНИЕ</h3>
+                      <h3 *ngIf="initWidth <=768" class="create">СОЗДАНИЕ ОБЬЯВЛЕНИЯ</h3>
+
+                  </div>
+            </div>
+            <div class="row progress-row justify-content-center">
+             <div class="col-3 center-block">
+               <label [ngStyle]="(initWidth <=768 && {'margin-left': (width-3)+'%' }) || (initWidth > 768 && {'margin-left': (width-4)+'%' })" >{{width}}%</label>
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width': width+'%' }" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+          <hr>
+            </div>
+            <div *ngIf="initWidth <=768 && showCreate" class="pop-up-info first" [@enterAnimation]>
+                Ваше объявление будет более эффективным при 100% заполнении.К тому же, повышается вероятность показа выше других объявлений.
+            </div>
+            <div class="form-inputs">
+              <div class="row justify-content-center">
+              <div class="col-8 center-block">
+             <form class="postsCreationForm" [formGroup]="postsCreationForm" novalidate >
+                <div class="blocks first">
+
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 768" src="../assets/Images/line.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 768" src="../assets/Images/1-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1 *ngIf="initWidth > 768"><span>У</span>кажите как можно больше информации:</h1>
+                      <h1 *ngIf="initWidth <= 768"><span>У</span>кажите информацию:</h1>
+                  </div>
+
+                    <div class="form-group padding-left">
+                            <div class="top">
+                              <div *ngIf="initWidth <= 768" class="comp-label">
+                                    <i (click)="showTitle = !showTitle"  class="icon ion-md-information-circle-outline"></i>
+                                    <label >Оглавление</label>
+                              </div>
+                              <div *ngIf="initWidth <=768 && showTitle" class="pop-up-info second" [@enterAnimation]>
+                                Лаконичный заголовок позволяет мастеру найти Вас проще среди других объявлений.
+                              </div>
+                              <label *ngIf="initWidth > 768">Напишите оглавление:</label>
+                              <input class="form-control" name="title" formControlName="title" #input  placeholder="Например: Постройка Дома из кирпича" (change)="testMethod(input)"/>
+                            </div>
+                            <div class="bot">
+                              <div class="alert-wrapper">
+                                  <div class="alert alert-danger"
+                                       *ngIf="postsCreationForm.controls['title'].invalid && postsCreationForm.controls['title'].touched" [@enterAnimation]>
+                                      Отсутствует или некоректное оглавление
+                                  </div>
+                              </div>
+                            </div>
+                    </div>
+                    <div class="form-group padding-left cat ">
+                      <div class="top">
+
+                        <div *ngIf="initWidth > 768" class="categoryList">
+                           <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event);testMethod(selection)" [@enterAnimation] >{{category}}<i class="icon ion-md-close"></i></div>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <label *ngIf="initWidth > 768" >Выберите нужное : </label>
+                        <select  name="categoryId" #selection formControlName="categoryId" class="form-control select" (change)="multiplyCategory($event, selection.options[selection.options.selectedIndex].text);testMethod(selection)">
+                            <option value="" disabled selected hidden>Категория</option>
+                            <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+                        </select>
+                        <div *ngIf="initWidth <= 768" class="categoryList">
+                           <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event);testMethod(selection)" [@enterAnimation] >{{category}}<i class="icon ion-md-close"></i></div>
+                        </div>
+                      </div>
+                      <div class="bot">
+                        <div class="alert-wrapper">
+                            <div class="alert alert-danger"
+                                 *ngIf="(catString == null || catString == '') && postsCreationForm.controls['categoryId'].touched" [@enterAnimation]>
+                                Необходимо выбрать хотя бы 1 категорию
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group padding-left">
+                      <div class="top">
+                        <div *ngIf="initWidth <=768" class="comp-label">
+                              <i  (click)="showDetails = !showDetails" class="icon ion-md-information-circle-outline"></i>
+                              <label >Детали работы</label>
+                        </div>
+                        <div *ngIf="initWidth <=768 && showDetails" class="pop-up-info second" [@enterAnimation]>
+                          Чем больше деталей Вы укажете,тем легче и быстрее нужный специалист найдет Вас.
+                        </div>
+                        <label *ngIf="initWidth > 768">Укажите детали:</label>
+                        <textarea placeholder="Например:
+На данный момент в квартире ремонт 90-х годов, я бы хотел сделать более современный стиль с элементами Лофта"  formControlName="description" #description name="description" (change)="testMethod(description)"></textarea>
+                      </div>
+                      <div class="bot">
+                        <div class="alert-wrapper">
+                            <div class="alert alert-danger"
+                                 *ngIf="postsCreationForm.controls['description'].invalid && postsCreationForm.controls['description'].touched" [@enterAnimation]>
+                                Отсутствует или некоректное описание
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+
+
+
+                </div>
+                <div class="divider-block first">
+                    <hr>
+                    <h2>30%</h2>
+                </div>
+                <div class="blocks second">
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 768" src="../assets/Images/line-2.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 768" src="../assets/Images/2-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1 *ngIf="initWidth > 768"><span>А</span>дресс и дата выполнения:</h1>
+                      <h1 *ngIf="initWidth <= 768"><span>А</span>дресс и дата</h1>
+                  </div>
+                        <div class="form-group padding-left cat" >
+                          <div class="top more">
+                            <label *ngIf="initWidth > 768">Выберите город:</label>
+                            <div *ngIf="initWidth <= 768" class="comp-label">
+                                  <i (click)="showCity = !showCity" class="icon ion-md-information-circle-outline"></i>
+                                  <label >Введите город и адрес</label>
+                            </div>
+                            <div *ngIf="initWidth <=768 && showCity" class="pop-up-info second" [@enterAnimation]>
+                            Возможно, требуемый специалист находится неподалеку - упростите ему поиск!
+                            </div>
+                            <select  name="location" formControlName="city" class="form-control select" #city name="city" (change)="testMethod(city)">
+                                <option value="" disabled selected hidden>Город</option>
+                                <option *ngFor="let location of locations" [value]="location.id">{{location.city}}</option>
+                            </select>
+                          </div>
+                          <div class="bot">
+                            <div class="alert-wrapper">
+                                <div class="alert alert-danger"
+                                     *ngIf="postsCreationForm.controls['city'].invalid && postsCreationForm.controls['city'].touched" [@enterAnimation]>
+                                    Необходимо выбрать город
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group padding-left">
+                          <div class="top">
+                            <label *ngIf="initWidth > 768">Адрес обьекта:</label>
+                            <input class="form-control"  formControlName="address" placeholder="Например: Ярослава Мудрого д.3" #adress name="adress" (change)="testMethod(adress)" />
+                          </div>
+                          <div class="bot">
+                            <div class="alert-wrapper">
+                                <div class="alert alert-danger"
+                                     *ngIf="postsCreationForm.controls['address'].invalid && postsCreationForm.controls['address'].touched" [@enterAnimation]>
+                                    Необходимо ввести адрес
+                                </div>
+                            </div>
+                          </div>
+                       </div>
+                    <div class="form-group padding-left date">
+
+                        <label *ngIf="initWidth > 768">Дата выполнения:</label>
+                        <div *ngIf="initWidth <= 768" class="comp-label">
+                              <i (click)="showDate = !showDate" class="icon ion-md-information-circle-outline"></i>
+                              <label >Дата начала работ</label>
+                        </div>
+                        <div *ngIf="initWidth <=768 && showDate" class="pop-up-info second" [@enterAnimation]>
+                            Определитесь с удобной для Вас датой выполнения, дабы специалист был назначен.
+                        </div>
+                        <ngb-datepicker #dp [(ngModel)]="model" #data name="data" formControlName="date" (select)="testMethod(data)" (navigate)="date = $event.next;"></ngb-datepicker>
+
+                    </div>
+                </div>
+                <div class="divider-block second">
+                    <hr>
+                    <h2>80%</h2>
+                </div>
+                <div class="blocks third">
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 768" src="../assets/Images/line-third.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 768" src="../assets/Images/3-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1><span>О</span>плата работы:</h1>
+                  </div>
+                    <div class="form-group padding-left cust">
+                          <label *ngIf="initWidth > 768" >Ориентировочная стоимость работ: </label>
+                          <div *ngIf="initWidth <= 768" class="comp-label">
+                                <i (click)="showPrice = !showPrice"  class="icon ion-md-information-circle-outline"></i>
+                                <label >Ориентировочная стоимость работ</label>
+                          </div>
+                          <div *ngIf="initWidth <=768 && showPrice" class="pop-up-info second" [@enterAnimation]>
+                            Предположите стоимость предоставления подобных услуг либо выберите пункт “Договорная цена”, дабы мастер сам назначил цену.
+                          </div>
+                          <div class="selectors">
+                            <div class="top">
+                          <input class="form-control"  formControlName="price"  #price name="price" (change)="testMethod(price)"/>
+                           <p *ngIf="initWidth <= 768" class="or">или</p>
+                          </div>
+                          <div class="bot">
+
+                            <label class="customcheck">Цена обсуждается лично
+                              <input type="checkbox" #check formControlName="cb" (change)="discuss = !discuss">
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                          <div class="bot">
+                             <div class="alert-wrapper">
+                                 <div class="alert alert-danger"
+                                      *ngIf="(((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !postsCreationForm.controls['cb'].touched) || ((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !check.checked)) || (postsCreationForm.controls['cb'].touched && !check.checked && price.value == '')" [@enterAnimation]>
+                                     Необходимо выбрать цену или выбрать пункт "Договорная цена"
+                                 </div>
+                             </div>
+                           </div>
+                          </div>
+                          <!--
+                          <div class="selectors">
+                            <div class="top">
+                              <p>от</p>
+                              <select class="form-control first" name="minPay">
+                                  <option value="" disabled selected hidden>0 грн.</option>
+                                  <option [value]="1">1000 грн.</option>
+                                  <option [value]="2">5000 грн.</option>
+                                  <option [value]="3">10000 грн.</option>
+                                  <option [value]="4">25000 грн.</option>
+                                  <option [value]="5">50000 грн.</option>
+                              </select>
+                              <p>до</p>
+                              <select class="form-control" name="minPay">
+                                  <option value="" disabled selected hidden>0 грн.</option>
+                                  <option [value]="1">100000 грн.</option>
+                                  <option [value]="2">200000 грн.</option>
+                                  <option [value]="3">500000 грн.</option>
+                                  <option [value]="4">1000000 грн.</option>
+                                  <option [value]="5">5000000 грн.</option>
+                              </select>
+                            </div>
+                          </div>
+                          -->
+
+
+                    </div>
+                    <!--
+                    <div class="form-group padding-left">
+                            <label>Выберите способ оплаты:</label>
+                            <input class="form-control" name="title" formControlName="title" placeholder="Например: Картой" />
+
+                    </div>
+                    <div class="bot another">
+
+                      <label class="customcheck">Сделать оплату через сайт и получить кэшбек 1%
+                        <input type="checkbox" >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    -->
+
+
+                </div>
+
+                <!--
+                <div class="divider-block third">
+                    <hr>
+                    <h2>85%</h2>
+                </div>
+                <div class="blocks fourth">
+                  <div class="input-header">
+                      <img src="../assets/Images/line-fourth.png" alt="Smiley face" height="42" width="42">
+                      <h1><span>К</span>онтакты:</h1>
+                  </div>
+                    <div class="form-group padding-left">
+                            <label>Войти через:</label>
+                            <div class="icons">
+                              <i class="icon ion-logo-googleplus" ></i>
+                              <i class="icon ion-logo-facebook" ></i>
+                            </div>
+
+                    </div>
+                </div>
+                -->
+
+                <div class="blocks submit">
+                  <button class="form-button" (click)="addPost()" [disabled]="(postsCreationForm.controls['title'].invalid && postsCreationForm.controls['title'].touched ) || ((catString == null || catString == '') && postsCreationForm.controls['categoryId'].touched) || (postsCreationForm.controls['description'].invalid && postsCreationForm.controls['description'].touched) || (postsCreationForm.controls['city'].invalid && postsCreationForm.controls['city'].touched) || (postsCreationForm.controls['address'].invalid && postsCreationForm.controls['address'].touched) || (formattedDate == null) || ((((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !postsCreationForm.controls['cb'].touched) || ((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !check.checked)) || (postsCreationForm.controls['cb'].touched && !check.checked && price.value == ''))" type="submit">Создать обьявление</button>
+                </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div *ngIf="initWidth > 768" class="advice" id="first-right">
+      <p>
+      Указывая больше информации Вы делаете легче поиск нужных специалистов для Ваших работ
+      </p>
+      <img src="../assets/Images/line-left.png" alt="Smiley face" height="42" width="42">
+      </div>
+      <div *ngIf="initWidth > 768" class="advice" id="second-right">
+      <p>
+      Возможно нужный для Вас специалист живет в 5 шагах от Вашего обьекта. Упростите поиск, как себе, так и специалистам
+      </p>
+      <img src="../assets/Images/dotted-line-last.png" alt="Smiley face" height="42" width="42">
+      </div>
+    </div>
+  </div>
+  <div *ngIf ="initWidth > 768 && initWidth <= 1024" class="row">
+    <div  class="col-lg-12">
+      <div class="post-create-form">
+        <div class="container-fluid">
+            <div class="form-header">
+              <div class="row justify-content-center">
+                  <div class="col text-center">
+                      <i *ngIf="initWidth <= 1024" (click)="showCreate = !showCreate" class="icon ion-md-information-circle-outline"></i>
+                      <h3 *ngIf="initWidth > 1024"  class="create">СОЗДАТЬ ОБЬЯВЛЕНИЕ</h3>
+                      <h3 *ngIf="initWidth <=1024" class="create">СОЗДАНИЕ ОБЬЯВЛЕНИЯ</h3>
+
+                  </div>
+            </div>
+            <div class="row progress-row justify-content-center">
+             <div class="col-3 center-block">
+               <label [ngStyle]="(initWidth <=1024 && {'margin-left': (width-3)+'%' }) || (initWidth > 1024 && {'margin-left': (width-4)+'%' })" >{{width}}%</label>
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width': width+'%' }" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+          <hr>
+            </div>
+            <div *ngIf="initWidth <=1024 && showCreate" class="pop-up-info first" [@enterAnimation]>
+                Ваше объявление будет более эффективным при 100% заполнении.К тому же, повышается вероятность показа выше других объявлений.
+            </div>
+            <div class="form-inputs">
+              <div class="row justify-content-center">
+              <div class="col-8 center-block">
+             <form class="postsCreationForm" [formGroup]="postsCreationForm" novalidate >
+                <div class="blocks first">
+
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 1024" src="../assets/Images/line.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 1024" src="../assets/Images/1-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1 *ngIf="initWidth > 1024"><span>У</span>кажите как можно больше информации:</h1>
+                      <h1 *ngIf="initWidth <= 1024"><span>У</span>кажите информацию:</h1>
+                  </div>
+
+                    <div class="form-group padding-left">
+                            <div class="top">
+                              <div *ngIf="initWidth <= 1024" class="comp-label">
+                                    <i (click)="showTitle = !showTitle"  class="icon ion-md-information-circle-outline"></i>
+                                    <label >Оглавление</label>
+                              </div>
+                              <div *ngIf="initWidth <=1024 && showTitle" class="pop-up-info second" [@enterAnimation]>
+                                Лаконичный заголовок позволяет мастеру найти Вас проще среди других объявлений.
+                              </div>
+                              <label *ngIf="initWidth > 1024">Напишите оглавление:</label>
+                              <input class="form-control" name="title" formControlName="title" #input  placeholder="Например: Постройка Дома из кирпича" (change)="testMethod(input)"/>
+                            </div>
+                            <div class="bot">
+                              <div class="alert-wrapper">
+                                  <div class="alert alert-danger"
+                                       *ngIf="postsCreationForm.controls['title'].invalid && postsCreationForm.controls['title'].touched" [@enterAnimation]>
+                                      Отсутствует или некоректное оглавление
+                                  </div>
+                              </div>
+                            </div>
+                    </div>
+                    <div class="form-group padding-left cat ">
+                      <div class="top">
+
+                        <div *ngIf="initWidth > 1024" class="categoryList">
+                           <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event);testMethod(selection)" [@enterAnimation] >{{category}}<i class="icon ion-md-close"></i></div>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <label *ngIf="initWidth > 1024" >Выберите нужное : </label>
+                        <select  name="categoryId" #selection formControlName="categoryId" class="form-control select" (change)="multiplyCategory($event, selection.options[selection.options.selectedIndex].text);testMethod(selection)">
+                            <option value="" disabled selected hidden>Категория</option>
+                            <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+                        </select>
+                        <div *ngIf="initWidth <= 1024" class="categoryList">
+                           <div *ngFor="let category of selectedlistOfCategories" (click)="removeCategory($event);testMethod(selection)" [@enterAnimation] >{{category}}<i class="icon ion-md-close"></i></div>
+                        </div>
+                      </div>
+                      <div class="bot">
+                        <div class="alert-wrapper">
+                            <div class="alert alert-danger"
+                                 *ngIf="(catString == null || catString == '') && postsCreationForm.controls['categoryId'].touched" [@enterAnimation]>
+                                Необходимо выбрать хотя бы 1 категорию
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group padding-left">
+                      <div class="top">
+                        <div *ngIf="initWidth <=1024" class="comp-label">
+                              <i  (click)="showDetails = !showDetails" class="icon ion-md-information-circle-outline"></i>
+                              <label >Детали работы</label>
+                        </div>
+                        <div *ngIf="initWidth <=1024 && showDetails" class="pop-up-info second" [@enterAnimation]>
+                          Чем больше деталей Вы укажете,тем легче и быстрее нужный специалист найдет Вас.
+                        </div>
+                        <label *ngIf="initWidth > 1024">Укажите детали:</label>
+                        <textarea placeholder="Например:
+  На данный момент в квартире ремонт 90-х годов, я бы хотел сделать более современный стиль с элементами Лофта"  formControlName="description" #description name="description" (change)="testMethod(description)"></textarea>
+                      </div>
+                      <div class="bot">
+                        <div class="alert-wrapper">
+                            <div class="alert alert-danger"
+                                 *ngIf="postsCreationForm.controls['description'].invalid && postsCreationForm.controls['description'].touched" [@enterAnimation]>
+                                Отсутствует или некоректное описание
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+
+
+
+                </div>
+                <div class="divider-block first">
+                    <hr>
+                    <h2>30%</h2>
+                </div>
+                <div class="blocks second">
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 1024" src="../assets/Images/line-2.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 1024" src="../assets/Images/2-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1 *ngIf="initWidth > 1024"><span>А</span>дресс и дата выполнения:</h1>
+                      <h1 *ngIf="initWidth <= 1024"><span>А</span>дресс и дата</h1>
+                  </div>
+                        <div class="form-group padding-left cat" >
+                          <div class="top more">
+                            <label *ngIf="initWidth > 1024">Выберите город:</label>
+                            <div *ngIf="initWidth <= 1024" class="comp-label">
+                                  <i (click)="showCity = !showCity" class="icon ion-md-information-circle-outline"></i>
+                                  <label >Введите город и адрес</label>
+                            </div>
+                            <div *ngIf="initWidth <=1024 && showCity" class="pop-up-info second" [@enterAnimation]>
+                            Возможно, требуемый специалист находится неподалеку - упростите ему поиск!
+                            </div>
+                            <select  name="location" formControlName="city" class="form-control select" #city name="city" (change)="testMethod(city)">
+                                <option value="" disabled selected hidden>Город</option>
+                                <option *ngFor="let location of locations" [value]="location.id">{{location.city}}</option>
+                            </select>
+                          </div>
+                          <div class="bot">
+                            <div class="alert-wrapper">
+                                <div class="alert alert-danger"
+                                     *ngIf="postsCreationForm.controls['city'].invalid && postsCreationForm.controls['city'].touched" [@enterAnimation]>
+                                    Необходимо выбрать город
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group padding-left">
+                          <div class="top">
+                            <label *ngIf="initWidth > 1024">Адрес обьекта:</label>
+                            <input class="form-control"  formControlName="address" placeholder="Например: Ярослава Мудрого д.3" #adress name="adress" (change)="testMethod(adress)" />
+                          </div>
+                          <div class="bot">
+                            <div class="alert-wrapper">
+                                <div class="alert alert-danger"
+                                     *ngIf="postsCreationForm.controls['address'].invalid && postsCreationForm.controls['address'].touched" [@enterAnimation]>
+                                    Необходимо ввести адрес
+                                </div>
+                            </div>
+                          </div>
+                       </div>
+                    <div class="form-group padding-left date">
+
+                        <label *ngIf="initWidth > 1024">Дата выполнения:</label>
+                        <div *ngIf="initWidth <= 1024" class="comp-label">
+                              <i (click)="showDate = !showDate" class="icon ion-md-information-circle-outline"></i>
+                              <label >Дата начала работ</label>
+                        </div>
+                        <div *ngIf="initWidth <=1024 && showDate" class="pop-up-info second" [@enterAnimation]>
+                            Определитесь с удобной для Вас датой выполнения, дабы специалист был назначен.
+                        </div>
+                        <ngb-datepicker #dp [(ngModel)]="model" #data name="data" formControlName="date" (select)="testMethod(data)" (navigate)="date = $event.next;"></ngb-datepicker>
+
+                    </div>
+                </div>
+                <div class="divider-block second">
+                    <hr>
+                    <h2>80%</h2>
+                </div>
+                <div class="blocks third">
+                  <div class="input-header">
+                      <img *ngIf="initWidth > 1024" src="../assets/Images/line-third.png" alt="Smiley face" height="42" width="42">
+                      <img *ngIf="initWidth <= 1024" src="../assets/Images/3-responsive.png" alt="Smiley face" height="42" width="42">
+                      <h1><span>О</span>плата работы:</h1>
+                  </div>
+                    <div class="form-group padding-left cust">
+                          <label *ngIf="initWidth > 1024" >Ориентировочная стоимость работ: </label>
+                          <div *ngIf="initWidth <= 1024" class="comp-label">
+                                <i (click)="showPrice = !showPrice"  class="icon ion-md-information-circle-outline"></i>
+                                <label >Ориентировочная стоимость работ</label>
+                          </div>
+                          <div *ngIf="initWidth <=1024 && showPrice" class="pop-up-info second" [@enterAnimation]>
+                            Предположите стоимость предоставления подобных услуг либо выберите пункт “Договорная цена”, дабы мастер сам назначил цену.
+                          </div>
+                          <div class="selectors">
+                            <div class="top">
+                          <input class="form-control"  formControlName="price"  #price name="price" (change)="testMethod(price)"/>
+                           <p *ngIf="initWidth <= 1024" class="or">или</p>
+                          </div>
+                          <div class="bot">
+
+                            <label class="customcheck">Цена обсуждается лично
+                              <input type="checkbox" #check formControlName="cb" (change)="discuss = !discuss">
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                          <div class="bot">
+                             <div class="alert-wrapper">
+                                 <div class="alert alert-danger"
+                                      *ngIf="(((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !postsCreationForm.controls['cb'].touched) || ((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !check.checked)) || (postsCreationForm.controls['cb'].touched && !check.checked && price.value == '')" [@enterAnimation]>
+                                     Необходимо выбрать цену или выбрать пункт "Договорная цена"
+                                 </div>
+                             </div>
+                           </div>
+                          </div>
+                          <!--
+                          <div class="selectors">
+                            <div class="top">
+                              <p>от</p>
+                              <select class="form-control first" name="minPay">
+                                  <option value="" disabled selected hidden>0 грн.</option>
+                                  <option [value]="1">1000 грн.</option>
+                                  <option [value]="2">5000 грн.</option>
+                                  <option [value]="3">10000 грн.</option>
+                                  <option [value]="4">25000 грн.</option>
+                                  <option [value]="5">50000 грн.</option>
+                              </select>
+                              <p>до</p>
+                              <select class="form-control" name="minPay">
+                                  <option value="" disabled selected hidden>0 грн.</option>
+                                  <option [value]="1">100000 грн.</option>
+                                  <option [value]="2">200000 грн.</option>
+                                  <option [value]="3">500000 грн.</option>
+                                  <option [value]="4">1000000 грн.</option>
+                                  <option [value]="5">5000000 грн.</option>
+                              </select>
+                            </div>
+                          </div>
+                          -->
+
+
+                    </div>
+                    <!--
+                    <div class="form-group padding-left">
+                            <label>Выберите способ оплаты:</label>
+                            <input class="form-control" name="title" formControlName="title" placeholder="Например: Картой" />
+
+                    </div>
+                    <div class="bot another">
+
+                      <label class="customcheck">Сделать оплату через сайт и получить кэшбек 1%
+                        <input type="checkbox" >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    -->
+
+
+                </div>
+
+                <!--
+                <div class="divider-block third">
+                    <hr>
+                    <h2>85%</h2>
+                </div>
+                <div class="blocks fourth">
+                  <div class="input-header">
+                      <img src="../assets/Images/line-fourth.png" alt="Smiley face" height="42" width="42">
+                      <h1><span>К</span>онтакты:</h1>
+                  </div>
+                    <div class="form-group padding-left">
+                            <label>Войти через:</label>
+                            <div class="icons">
+                              <i class="icon ion-logo-googleplus" ></i>
+                              <i class="icon ion-logo-facebook" ></i>
+                            </div>
+
+                    </div>
+                </div>
+                -->
+
+                <div class="blocks submit">
+                  <button class="form-button" (click)="addPost()" [disabled]="(postsCreationForm.controls['title'].invalid && postsCreationForm.controls['title'].touched ) || ((catString == null || catString == '') && postsCreationForm.controls['categoryId'].touched) || (postsCreationForm.controls['description'].invalid && postsCreationForm.controls['description'].touched) || (postsCreationForm.controls['city'].invalid && postsCreationForm.controls['city'].touched) || (postsCreationForm.controls['address'].invalid && postsCreationForm.controls['address'].touched) || (formattedDate == null) || ((((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !postsCreationForm.controls['cb'].touched) || ((postsCreationForm.controls['price'].invalid && postsCreationForm.controls['price'].touched) && !check.checked)) || (postsCreationForm.controls['cb'].touched && !check.checked && price.value == ''))" type="submit">Создать обьявление</button>
+                </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

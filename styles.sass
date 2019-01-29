@@ -1,0 +1,359 @@
+@import './sass-utilities/variables'
+@import './sass-utilities/animations'
+
+//FONTS
+// main fonts - LTC normal
+@font-face
+  font-family: 'Arimo'
+  src: url('./assets/Fonts/arimo.ttf') format('truetype')
+  font-style: normal
+  font-weight: normal
+@font-face
+  font-family: 'Arimo'
+  src: url('./assets/Fonts/arimobold.ttf') format('truetype')
+  font-style: normal
+  font-weight: bold
+@font-face
+  font-family: 'Arimo'
+  src: url('./assets/Fonts/arimobolditalic.ttf') format('truetype')
+  font-style: italic
+  font-weight: bold
+@font-face
+  font-family: 'Arimo'
+  src: url('./assets/Fonts/arimoitalic.ttf') format('truetype')
+  font-style: italic
+  font-weight: normal
+//additional
+@font-face
+  font-family: 'Pacifico'
+  src: url('./assets/Fonts/Pacifico-Regular.ttf') format('truetype')
+/*NOT SURE */
+@font-face
+  font-family: 'Phenomena'
+  src: url('./assets/Fonts/Phenomena-Black.otf') format('opentype')
+  font-style: normal
+  font-weight: 500
+@font-face
+  font-family: 'Phenomena'
+  src: url('./assets/Fonts/Phenomena-ExtraBold.otf') format('opentype')
+  font-style: normal
+  font-weight: bold
+@font-face
+  font-family: 'Phenomena'
+  src: url('./assets/Fonts/Phenomena-Regular.otf') format('opentype')
+  font-style: normal
+  /*SWAP WITH BLACK*/
+  font-weight: normal
+//styles
+.accent
+  color: $blue
+.accent-tag
+  color: $blue!important
+  stroke: $blue!important
+input
+  border-color: $grey-disabled
+  &:focus
+    outline: none !important
+    box-shadow: none !important
+    border-color: $grey-disabled !important
+figure
+  margin: 0
+.Reppy
+  font-size: 28px !important
+html, body
+  height: 100%!important
+body
+   color: $grey
+   background-color: $body-background
+   overflow-x: hidden
+   font-family: 'Arimo' !important
+   line-height: unset
+   //overflow-y: hidden
+// BOOTSTRAP Fixes
+*, *::before, *::after
+     outline: 0!important
+label
+  font-size: 14px
+  margin-bottom: 7px
+input
+  border-radius: $border-radius
+  border: solid 1px $grey-disabled
+  transition: .3s ease
+  box-sizing: border-box
+  width: 100%
+  font-size: 14px
+  padding: 10px 15px
+input:focus
+  border: solid 1px $violet-border
+input::-webkit-input-placeholder
+  color: $grey-disabled
+input::-moz-placeholder
+  color: $grey-disabled
+input:-moz-placeholder
+  color: $grey-disabled
+input:-ms-input-placeholder
+  color: $grey-disabled
+button
+  color: $block-background
+  background-color: $blue
+  transition: .3s ease
+  cursor: pointer
+  padding: 10px 15px
+  font-size: 14px
+  font-weight: bold
+  border: 0
+  border-radius: $border-radius
+button:hover
+  opacity: .8
+button:active
+  opacity: .5
+button[disabled]
+  background-color: $grey-disabled!important
+  opacity: 1!important
+a
+  color: $blue
+  transition: .3s ease
+  font-style: italic
+  font-size: 13px
+a:hover, a:active, a:visited, a:focus, .numbers
+  color: $blue
+hr
+  margin: 0
+  border-top: 1px solid $grey-disabled
+h6
+  font-size: unset
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+  line-height: 1.1
+  margin-bottom: 5px
+.logo span.main-color
+  color: black!important
+.form-wrapper
+  box-shadow: $box-shadow-down
+  background-color: $block-background
+  padding: 40px
+  position: absolute
+  width: 370px
+  margin: auto
+  right: 0
+  left: 0
+  top: 0
+  bottom: 0
+  animation: fadeIn .5s
+  border-radius: $border-radius
+  h1, h2, small
+    text-align: center
+  small
+    margin-bottom: 20px
+    display: block
+  .form-group
+    margin-bottom: 10px
+    label
+      display: block
+  .form-button-wrapper
+    margin-top: 25px
+    text-align: center
+    a
+      display: inline-block
+    a, button
+      margin: 0 7px
+  .alert-wrapper
+    height: 20px
+.hidden
+  display: none !important
+.name-wrapper:hover + ngx-popover > .reppy-popover, ngx-popover:hover > .reppy-popover
+  opacity: 1
+  visibility: visible
+
+.modal
+  top: 100px
+  animation: .5s slideUp
+  .fade.show.d-block.dark-modal
+    background-color: red
+.modal-content
+  border: 0
+  section.form-wrapper
+     top: 500px
+ngb-datepicker.ng-tns-c8-0.ng-valid.ng-touched.ng-dirty
+    width: 100%
+    font-size: 20px
+    margin-top: 11px
+    border : 3px solid
+    .ngb-dp-months
+      display: block
+      width: 100%
+    .ngb-dp-day
+      width: 100%
+      height: 2rem
+      padding-left: 4%
+    .ngb-dp-week.ngb-dp-weekdays.bg-light
+      width: unset
+      padding-left: 0
+    .ngb-dp-week
+
+    .ngb-dp-weekday.small.text-center.font-italic
+      width: 100%
+ngb-datepicker.ng-untouched.ng-pristine.ng-valid
+      width: 100%
+      font-size: 20px
+      margin-top: 11px
+      border : 3px solid
+      .ngb-dp-months
+        display: block
+        width: 100%
+      .ngb-dp-day
+        width: 100%
+        height: 2rem
+        padding-left: 4%
+      .ngb-dp-week.ngb-dp-weekdays.bg-light
+        width: unset
+        padding-left: 0
+      .ngb-dp-week
+
+      .ngb-dp-weekday.small.text-center.font-italic
+        width: 100%
+.form-group.padding-left.date
+    [_nghost-c9],[_nghost-c14]
+        width: 100% !important
+        font-size: 20px !important
+        margin-top: 11px !important
+        border : 3px solid !important
+        .ngb-dp-months
+          display: block !important
+          width: 100% !important
+        .ngb-dp-day
+          width: 100% !important
+          height: 2rem !important
+          padding-left: 4% !important
+        .ngb-dp-week.ngb-dp-weekdays.bg-light
+          width: unset !important
+          padding-left: 0 !important
+        .ngb-dp-week
+
+        .ngb-dp-weekday.small.text-center.font-italic
+          width: 100% !important
+/*==========  TAblet First  ==========*/
+@media only screen and (max-width : 768px)
+    ngb-datepicker.ng-tns-c8-0.ng-valid.ng-touched.ng-dirty
+        width: 100%
+        font-size: 20px
+        margin-top: 11px
+        border : 3px solid
+        .ngb-dp-months
+          display: block
+          width: 100%
+        .ngb-dp-day
+          width: 100%
+          height: 2rem
+          padding-left: 4%
+        .ngb-dp-week.ngb-dp-weekdays.bg-light
+          width: unset
+          padding-left: 0
+        .ngb-dp-week
+
+        .ngb-dp-weekday.small.text-center.font-italic
+          width: 100%
+    ngb-datepicker.ng-untouched.ng-pristine.ng-valid
+          width: 100%
+          font-size: 20px
+          margin-top: 11px
+          border : 3px solid
+          .ngb-dp-months
+            display: block
+            width: 100%
+          .ngb-dp-day
+            width: 100%
+            height: 2rem
+            padding-left: 4%
+          .ngb-dp-week.ngb-dp-weekdays.bg-light
+            width: unset
+            padding-left: 0
+          .ngb-dp-week
+
+          .ngb-dp-weekday.small.text-center.font-italic
+            width: 100%
+    .form-group.padding-left.date
+        [_nghost-c9],[_nghost-c14]
+            width: 100% !important
+            font-size: 20px !important
+            margin-top: 5px !important
+            border : 2px solid !important
+            .ngb-dp-months
+              display: block !important
+              width: 100% !important
+            .ngb-dp-day
+              width: 100% !important
+              height: 2rem !important
+              padding-left: 3.7% !important
+            .ngb-dp-week.ngb-dp-weekdays.bg-light
+              width: unset !important
+              padding-left: 0 !important
+            .ngb-dp-week
+
+            .ngb-dp-weekday.small.text-center.font-italic
+              width: 100% !important
+
+/*==========  Mobile First  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+  ngb-datepicker.ng-tns-c8-0.ng-valid.ng-touched.ng-dirty
+      width: 100%
+      font-size: 20px
+      margin-top: 11px
+      border : 3px solid
+      .ngb-dp-months
+        display: block
+        width: 100%
+      .ngb-dp-day
+        width: 100%
+        height: 2rem
+        padding-left: 4%
+      .ngb-dp-week.ngb-dp-weekdays.bg-light
+        width: unset
+        padding-left: 0
+      .ngb-dp-week
+
+      .ngb-dp-weekday.small.text-center.font-italic
+        width: 100%
+  ngb-datepicker.ng-untouched.ng-pristine.ng-valid
+        width: 100%
+        font-size: 20px
+        margin-top: 11px
+        border : 3px solid
+        .ngb-dp-months
+          display: block
+          width: 100%
+        .ngb-dp-day
+          width: 100%
+          height: 2rem
+          padding-left: 4%
+        .ngb-dp-week.ngb-dp-weekdays.bg-light
+          width: unset
+          padding-left: 0
+        .ngb-dp-week
+
+        .ngb-dp-weekday.small.text-center.font-italic
+          width: 100%
+  .form-group.padding-left.date
+      [_nghost-c9],[_nghost-c14]
+          width: 100% !important
+          font-size: 20px !important
+          margin-top: 5px !important
+          border : 2px solid !important
+          .ngb-dp-months
+            display: block !important
+            width: 100% !important
+          .ngb-dp-day
+            width: 100% !important
+            height: 2rem !important
+            padding-left: 0% !important
+          .ngb-dp-week.ngb-dp-weekdays.bg-light
+            width: unset !important
+            padding-left: 0 !important
+          .ngb-dp-week
+
+          .ngb-dp-weekday.small.text-center.font-italic
+            width: 100% !important
+
+//media
+@import './sass-utilities/media'

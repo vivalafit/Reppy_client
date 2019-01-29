@@ -1,0 +1,279 @@
+@import '../../../sass-utilities/_variables.sass'
+@import '../../../sass-utilities/_animations.sass'
+
+/*MIXINS*/
+@mixin employee($left)
+      position: absolute
+      top: 10px
+      left: $left
+      width: 245px
+      button.btn.btn-primary
+        width: 245px
+        height: 55px
+        color: white
+        background-color: $blue
+        border-radius: 3px
+        // border-color: white
+        // border: bold white 2px
+        font-weight: bold
+        padding: 0
+        padding-top: 5px
+        padding-bottom: 8px
+        font-size: 20px
+        left: 270px
+        position: relative
+        top: 80px
+        margin-top: -7px
+
+        &:focus
+           box-shadow: none
+        h6
+         font-weight: 700
+         letter-spacing: 1.2px
+         font-size: 13px !important
+         margin-bottom: -29px
+         padding-bottom: 2px
+        h3
+         font-size: 16px
+         font-weight: 100
+         margin-bottom: 0
+         letter-spacing: 1.4px
+      h4
+        padding-top: 200px
+        margin-bottom: 17px
+        color: white
+        margin-left: auto
+        font-weight: 100
+        font-size: 22px
+        // letter-spacing: 0.2px
+        width: 800px
+      button.btn.btn-link
+        opacity: 0.7
+        margin-left: 67px
+        color:  white
+        text-decoration: underline
+      .description
+        padding: 15px
+        padding-top: 20px
+        padding-bottom: 20px
+        color: white
+        background: rgba(0, 0, 0, 0.5)
+        position: relative
+        margin: 0 auto
+        text-align: center
+        height: auto
+        width: 350px
+        left: 100px
+        top: 80px
+
+@mixin desktop
+  @media (max-width: 1400px)
+    @content
+
+/*MIXINS*/
+
+.main-overlay
+    height: 100vh
+    width: 100%
+.how-it-works
+    position: absolute
+    left: 45.9%
+    top: 635px
+    cursor: pointer
+    width: 142px
+    h6
+      color: white
+      font-size: 17px
+      letter-spacing: 0.2px
+      font-weight: 200
+      cursor: pointer
+      text-align: center
+    i.icon.ion-md-arrow-dropdown-circle
+      font-size: 40px
+      margin-left: 47px
+      color: white
+
+
+
+.employee
+    @include employee(5%)
+.employer
+    @include employee(62%)
+
+.background
+     position : relative
+     height: 744px
+     div.background-part1
+       height: 100%
+       width: 51%
+       position: absolute
+       background: url(/assets/Images/background-home-part1.png) center no-repeat
+       z-index: -2
+     div.background-part2
+       height: 100%
+       width: 50%
+       background: url(/assets/Images/background-home-part2.png) center no-repeat
+       background-size: cover
+       position: absolute
+       left: 50%
+       z-index: -1
+
+.how-it-works-wrapper
+  position: relative
+  text-align: center
+  margin: 60px 0 40px 0
+  .row
+    .left
+      position: absolute
+      top: 120px
+      left: 220px
+      h4
+        font-size: 21px
+        font-weight: bold
+        color: black
+      div
+        position: absolute
+        height: 13px
+        width: 461px
+        background-color: #c2c2ff
+        z-index: -1
+        top: 14px
+        left: -300px
+    .right
+      position: absolute
+      top: 120px
+      left: 1000px
+      h4
+        font-size: 21px
+        font-weight: bold
+        color: black
+      div
+        position: absolute
+        height: 13px
+        width: 461px
+        background-color: #c2c2ff
+        z-index: -1
+        top: 14px
+        left: 200px
+  .wrapper
+    position: absolute
+    left: 49%
+    background: url(/assets/Images/wrapper.png) center no-repeat
+    background-size: contain
+    height: 555px
+    width: 30px
+  .categories
+    position: absolute
+    background: url(/assets/Images/categories.png) center no-repeat
+    background-size: contain
+    height: 80px
+    width: 300px
+    top: 610px
+    left: 40%
+  h3
+    margin: 30px 0 20px 0
+    font-size: 40px
+    color: black
+  .step
+    padding: 10px 0
+    position: relative
+    top: 100px
+    height: 650px
+    div
+      // background-color: $block-background
+      // border-top-left-radius: $border-radius
+      // border-top-right-radius: $border-radius
+      // box-shadow: $box-shadow-down
+      position: relative
+      width: 80%
+      margin: 0 auto
+      padding: 40px 30px
+      button
+        position: absolute
+        top: 480px
+        color: $blue
+        border: 2px solid $blue
+        background-color: white
+        height: 60px
+        width: 200px
+        left: 55px
+      h5
+        font-weight: bold
+        margin: 20px 0
+        color: black
+      .icon
+        color: $blue
+      .paper
+        background: url(/assets/Images/paper.png) center no-repeat
+      .search
+        background: url(/assets/Images/search.png) center no-repeat
+      .desktop
+        background: url(/assets/Images/desk.png) center no-repeat
+      .head
+        background: url(/assets/Images/head.png) center no-repeat
+    .number-one
+      position: absolute
+      background: url(/assets/Images/1.png) center no-repeat
+      background-size: contain
+      top: 150px
+      left: 40px
+      height: 155px
+      width: 0px
+    .number-two
+      position: absolute
+      background: url(/assets/Images/2.png) center no-repeat
+      background-size: contain
+      top: 150px
+      left: 40px
+      height: 155px
+      width: 80px
+
+
+.wrapper-high
+  position: absolute
+  height: 677px
+  width: 99.8%
+  background: url(/assets/Images/high-arrow.png) center no-repeat
+  background-size: contain
+  z-index: 0
+.wrapper-low
+  position: absolute
+  height: 184px
+  width: 5px
+  left: 49.9%
+  top: 560px
+  background: url(/assets/Images/vertical-line.png) center
+  z-index: 1
+.vetrical-line
+  position: absolute
+  height: 70px
+  width: 8px
+  background-color: white
+  z-index: 1
+  left: 270px
+.horizontal-line-left
+  position: absolute
+  height: 8px
+  width: 145px
+  background-color: white
+  z-index: 1
+  top: 390px
+  left: -55px
+.horizontal-line-right
+  position: absolute
+  height: 8px
+  width: 145px
+  background-color: white
+  z-index: 1
+  top: 390px
+  right: -360px
+.arrow
+  position: absolute
+  background: url(/assets/Images/arrow.png) center no-repeat
+  background-size: cover
+  top: 472px
+  left: 49.5%
+  height: 19px
+  width: 16px
+  z-index: 1
+

@@ -1,0 +1,36 @@
+<div class="header" style="height: 60px;">
+
+</div>
+<header>
+    <div class="left-side col-md-6 flex-row">
+        <div class="logo" (click)="goHome()"></div>
+        <ngx-search placeholder="Введите категорию..." (onChoose)="search($event)"></ngx-search>
+       <button class="freelancers" (click)="findFreelancer()">Специалисты</button>
+    </div>
+    <div class="right-side col-md-6">
+
+        <button class="posts" (click)="findPost()">Объявления</button>
+        <button *ngIf="user && mode === 'c'" (click)="createPost()">Создать обьявление</button>
+        <button *ngIf="user && mode === 'f'" (click)="findPost()">Найти работу</button>
+        <div class="messanger" *ngIf="user" (clickOutside)="closeList($event)">
+          <p class="notificationCounter"  *ngIf="(user && mode === 'c') && notificationCounterEmployee ">{{notificationCounterEmployee}}</p>
+          <p class="notificationCounter"  *ngIf="(user && mode === 'f') && notificationCounterEmployer">{{notificationCounterEmployer}}</p>
+          <i class="icon ion-md-mail-unread" (click)="showNotificationList()"></i>
+          <app-notification-list [hidden]="hiddenList" [completedNew]="completedNew" [requestAproved]="requestAproved" [mode]="mode"></app-notification-list>
+        </div>
+        <div class="name-wrapper" *ngIf="user?.name" (click)="goDash()">
+
+            <letter-color   [word]="user.name"></letter-color>
+            <ngx-pie  [url]="user?.avatar ? (env.api + formatPath(user.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="50" [percentage]="user?.rating"></ngx-pie>
+        </div>
+        <ngx-popover *ngIf="user" [mode]="mode" [user]="user"></ngx-popover>
+        <button *ngIf="!user" (click)="goLegalEntity()">Юр. лицам</button>
+        <button *ngIf="!user" class="login" (click)="goLogin()">ВХОД</button>
+        <div class="helper" (clickOutside)="close($event)">
+            <i class="icon ion-md-help-circle-outline" (click)="showFAQ()"></i>
+             <app-faq  [hidden]="hidden" ></app-faq>
+        </div>
+
+    </div>
+
+</header>

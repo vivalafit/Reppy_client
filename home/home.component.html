@@ -1,0 +1,117 @@
+<div class="main-overlay">
+  <div class="background">
+
+    <div class="background-part1">
+      <div class="gradient-part1">
+
+      </div>
+    </div>
+    <div class="wrapper-high"></div>
+    <div class="background-part2">
+      <div class="gradient-part2">
+
+      </div>
+    </div>
+
+  </div>
+  <div (click)="scroll(target)" class="how-it-works">
+    <h6>КАК ЭТО РАБОТАЕТ?</h6>
+  </div>
+  <div class="employee">
+    <h4>REPPY - ЭТО НЕ ПРОСТО ДОСКА ОБЪЯВЛЕНИЙ</h4>
+    <div class='vetrical-line'></div>
+    <div class="horizontal-line-left"></div>
+    <div class="description">
+      Ищете мастера по строительству и ремонту, либо желаете оформить сотрудничество
+      на крупный объект? Вы на правильном пути. Огромное количество высококлассных
+      специалистов ждут Ваших предложений.
+    </div>
+    <button type="button" class="btn btn-primary" (click)="createPost()">
+      <h3>НАЙТИ СПЕЦИАЛИСТА</h3>
+    </button>
+  </div>
+  <div class="employer">
+    <h4>REPPY - ЭТО ВСЕ В СФЕРЕ СТРОИТЕЛЬСТВА/РЕМОНТА</h4>
+    <div class='vetrical-line'></div>
+    <div class="horizontal-line-right"></div>
+    <div class="description">
+      Если вы мастер своего дела и работаете в сфере ремонта и строительства - скорее к нам!
+      Оформив портфолио, вы найдете потенциальных клиентов и
+      полезные контакты. Прославиться еще никогда не было так просто!
+    </div>
+    <button type="button" class="btn btn-primary" (click)="goRegister()">
+      <h3>Я - СПЕЦИАЛИСТ</h3>
+    </button>
+  </div>
+  <div #target class="how-it-works-wrapper">
+    <h3>
+      Как это работает?
+    </h3>
+    <div class="row">
+      <div class="left">
+        <h4>Если вы ищете специалиста:</h4>
+        <div></div>
+      </div>
+      <div class="right">
+        <h4>Если вы специалист/компания:</h4>
+        <div></div>
+      </div>
+      <div class="col step">
+        <div>
+          <div class="icon paper"></div>
+          <h5>Публикация задания</h5>
+          <p>
+            Расскажите нам о своем проекте и о нужных навыках в его рамках.
+            Укажите максимальное количество деталей, необходимых для его исполнения мастером.
+            Для увеличения точности прикрепите фотографию в хорошем качестве.
+          </p>
+          <button (click)="findFreelancers()">Найти специалиста</button>
+        </div>
+        <div class="number-one"></div>
+      </div>
+      <div class="col step">
+        <div>
+          <div class="icon search"></div>
+          <h5>Поиск напрямую</h5>
+          <p>
+            Ищите мастера самостоятельно, руководствуясь его навыками.
+            Доска объявлений содержит профили исполнителей с кратким содержанием.
+            Для получения подробной информации простым щелчком мышки кликните
+            на мастера и ознакомьтесь с его портфолио. Чтобы связаться с подходящим
+            мастером оставьте ему предложение и ожидайте одобрения.
+          </p>
+        </div>
+        <div class="number-two"></div>
+      </div>
+      <div class="wrapper"></div>
+      <div class="categories"></div>
+      <div class="col step">
+        <div>
+          <div class="icon desktop"></div>
+          <h5>Настройте рабочее пространство</h5>
+          <p>
+            Опишите спектр своих услуг. Разместите у себя в профиле фото своих работ для улучшения
+            портфолио. Верифицируйте свой аккаунт с помощью доступных сертификатов и лицензий.
+            Заполните профиль на 100% и клиенты найдут вас быстрее.
+          </p>
+        </div>
+        <div class="number-one"></div>
+      </div>
+      <div class="col step">
+        <div>
+          <div class="icon head"></div>
+          <h5>Работайте с проектами любой сложности</h5>
+          <p>
+            Клиенты размещают сотни объявлений в разнообразных категориях.
+            Вы в праве распоряжаться своим временем и сотрудничать с понравившимися.
+            Не забывайте следить за уведомениями и проверять актуальные предложения,
+            а при необходимости включите рассылку на электронную почту и телефон.
+          </p>
+          <button (click)="goRegister()">Создать кабинет</button>
+        </div>
+        <div class="number-two"></div>
+      </div>
+    </div>
+  </div>
+  <app-footer position="static" [fullWidth]="true"></app-footer>
+</div>

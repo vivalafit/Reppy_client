@@ -1,0 +1,106 @@
+@import '../../../sass-utilities/_variables'
+
+.edit-profile-wrapper
+  background-color: #FFFFFF
+  border-top-left-radius: 2px
+  border-top-right-radius: 2px
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+  width: 50%
+  margin: 0 auto
+  height: auto
+  padding: 40px
+.categories
+  position: relative
+  .categoryList
+    margin-bottom: 10px
+    div
+      margin: 0
+      margin-right: 9px
+      margin-top: 4px
+      position: relative
+      font-weight: 100
+      color: #f3f3f3
+      background-color: #3D5AFF
+      width: auto
+      padding: 3px 5px
+      padding-right: 15px
+      font-size: 11px
+      display: inline-block
+      cursor: pointer
+      animation: .5s fadeIn
+      transition : all .5s
+      i.icon.ion-md-close
+        position: absolute
+        width: 0
+        right: 11px
+        top: 3.6px
+        pointer-events: none
+.form-wrapper
+  max-height: 500px
+  .form-button-wrapper
+    margin-top: 0px
+    text-align: center
+.alert
+  color: #e10202
+  position: relative
+  border: 0
+  border-radius: 0
+  font-size: 13.5px
+  margin-top: 5px
+  /* margin-left: 4.2%; */
+  padding: 0
+  background-color: unset
+  margin-bottom: 0
+.inputError
+  border-color: #e10202
+
+.longer
+  max-height: 615px
+  top: 60px
+.hidden
+  display: none
+.photoLayer
+  z-index: 2 !important
+
+.form-group.photos
+  margin-top: 0
+  label
+    margin-bottom: 10px
+  .fileblocks
+    display: flex
+    position: relative
+    .file_upload
+      position: relative
+      width: 90px
+      height: 105px
+      img
+        height: 103px
+        position: absolute
+        width: 90px
+        z-index: -1
+        top: 2px
+        left: 100px
+        -webkit-transition: 1s
+        transition: 1s
+      .test
+        left: 200px !important
+        z-index: 1
+      input
+        display: none
+      button.mat-raised-button
+
+        background-color: white
+        width: 100%
+        height: 100%
+        border: 2px solid #C3C7CE
+        p
+          line-height: 1.4
+          padding-bottom: 15%
+          font-size: 9.5px
+          margin: 0
+          padding-top: 25%
+          color: #C3C7CE
+        i
+          color: $grey-disabled
+          font-size: 45px

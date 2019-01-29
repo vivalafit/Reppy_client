@@ -1,0 +1,1096 @@
+//imports
+@import '../../../sass-utilities/_variables.sass'
+@import '../../../sass-utilities/_animations.sass'
+//
+.body
+     background-color: white
+     font-family: 'Phenomena' !important
+     color: black
+
+.post-create-form
+      margin-top: 35px
+
+      div.form-inputs
+        margin-top: 25px
+
+        .blocks
+            position: relative
+            .alert-danger
+                color: black
+                background-color: #f8d7da
+                margin-top: 15px
+                font-size: 19px
+                margin-bottom: 0
+                border: 3px solid
+                border-color: #f5c6cb
+            .categoryList
+              margin-bottom: 10px
+              position: relative
+              width: 60%
+              margin-left: 28.5%
+              div
+                border-radius: 6px
+                margin: 0
+                margin-right: 9px
+                margin-top: 4px
+                position: relative
+                font-weight: 100
+                color: #f3f3f3
+                background-color: #3D5AFF
+                width: auto
+                padding: 7px 7px
+                padding-right: 20px
+                font-size: 16px
+                display: inline-block
+                cursor: pointer
+                animation: .5s fadeIn
+                transition : all .5s
+                border: 2px solid
+                border-color: black
+                i.icon.ion-md-close
+                   position: absolute
+                   width: 0
+                   font-weight: bold
+                   right: 14px
+                   top: 8.1px
+                   pointer-events: none
+            .input-header
+                margin-left: -50px
+                margin-bottom: 25px
+                h1
+                  font-weight: 600
+                  margin-left: 15px
+                  font-size: 37px
+                  span
+                    font-weight: 600
+                    font-size: 55px
+                    color: blue
+                    opacity: 0.7
+                img
+                  position: absolute
+                  top : 5px
+                  height: 150px
+                  left: -70px
+                  width: 300px
+
+        #first-left
+          position: absolute
+          left: -66%
+          p
+            margin-top: 53px
+            width: 20%
+            margin-left: 5%
+            text-align: -webkit-center
+            margin-bottom: 1rem
+            font-size: 18px
+          img
+            height: auto
+            width: 41%
+            position: absolute
+            left: 19%
+            top: -27%
+        .second
+             margin-top: 15px
+        .third
+             margin-top: 15px
+             input.form-control
+
+             .top
+               width: 100%
+               display: flex
+             .bot.another
+                  label
+                    margin: 0
+                    margin-left: 35%
+                    margin-top: -17px
+             .bot
+               width: 100%
+               display: flex
+               label
+                 width: 100%
+                 font-weight: 100
+                 margin-top: 20px
+               /* The customcheck */
+               .customcheck
+                  display: block
+                  position: relative
+                  padding-left: 45px
+                  margin-bottom: 12px
+                  cursor: pointer
+                  font-size: 22px
+                  -webkit-user-select: none
+                  -moz-user-select: none
+                  -ms-user-select: none
+                  user-select: none
+               .customcheck input
+                    position: absolute
+                    opacity: 0
+                    cursor: pointer
+               .checkmark
+                  border: 2.5px solid
+                  position: absolute
+                  top: 0
+                  left: 0
+                  height: 30px
+                  width: 30px
+                  background-color: unset
+                  border-radius: 5px
+               .customcheck:hover input ~ .checkmark
+                      background-color: #ebebeb
+                      border: 2.5px solid
+               .customcheck:hover input ~ .checkmark
+                      background-color: #ebebeb
+                      border: 2.5px solid
+               .customcheck input:checked ~ .checkmark
+                    background-color: $blue
+                    border-radius: 5px
+                    border: 2.5px solid
+               .checkmark:after
+                  content: ""
+                  position: absolute
+                  display: none
+               .customcheck input:checked ~ .checkmark:after
+                    display: block
+               .customcheck .checkmark:after
+                    left: 10px
+                    top: 6px
+                    width: 5px
+                    height: 10px
+                    border: solid white
+                    border-width: 0 3px 3px 0
+                    -webkit-transform: rotate(45deg)
+                    -ms-transform: rotate(45deg)
+                    transform: rotate(45deg)
+             .selectors
+               width: 100%
+               display: block
+               margin-top: 11px
+               p
+                color: $blue
+                text-transform: uppercase
+                font-size: 20px
+                font-weight: 600
+                margin-left: 25px
+                margin-right: 25px
+                margin-top: 10px
+                &:first-child
+                  margin-left: 0
+               select.form-control.first
+                  width: 50%
+               select.form-control
+                 height: 36px
+                 &:last-child
+                   width: 80%
+                   margin-right: 10%
+        .fourth
+           margin-top: 15px
+           .icons
+               width: 100%
+               display: flex
+               i.icon.ion-logo-googleplus
+                 cursor: pointer
+                 margin-left: 10%
+                 margin-top: -0.6px
+                 background-color: #e85858
+                 color: white
+                 height: 49px
+                 width: 49px
+                 padding-left: 9px
+                 padding-top: 3px
+                 font-size: 37px
+                 border-radius: 50px
+               i.icon.ion-logo-facebook
+                 cursor: pointer
+                 background-color: white
+                 font-size: 62px
+                 margin-left: 40px
+                 margin-top: -13.6px
+                 color: #0d3c84
+
+        .form-group.padding-left.cat
+             select
+              height: auto
+              padding: 0.5px 8.5px
+              padding-top: 0
+              &:focus
+                box-shadow: unset
+        #first-right
+           position: absolute
+           left: -66%
+           p
+             margin-top: 53px
+             width: 20%
+             margin-left: 5%
+             text-align: -webkit-center
+             margin-bottom: 1rem
+             font-size: 18px
+           img
+             height: auto
+             width: 41%
+             position: absolute
+             left: 19%
+             top: -27%
+        .divider-block
+           position: relative
+           hr
+             width: 130%
+             margin-top: 35px
+             margin-left: -15%
+             border-top: 2px solid $blue
+           h2
+              position: absolute
+              background-color: blue
+              color: white
+              border-radius: 75px
+              height: 45px
+              right: -15%
+              font-size: 38px
+              top: -34px
+              padding-top: 4px
+              padding-top: 11px
+              padding-bottom: 54px
+              padding-right: 5px
+              padding-left: 7px
+        .form-group.padding-left.date
+            display: flex
+        .form-group.padding-left.cust
+            display: flex
+        .form-group.padding-left
+
+          .top
+            display: flex
+          label
+            margin-top: 7px
+            font-size: 24px
+            width: 40%
+            font-weight: 600
+          textarea
+            resize: none
+            display: block
+            letter-spacing: 0.5px
+            width: 100%
+            overflow: hidden
+            height: 130px
+            line-height: 1
+            margin-top: 4.5px
+            padding: 0.95rem 0.75rem
+            font-size: 1.2rem
+            padding-top: 3px
+            color: #495057
+            background-color: #fff
+            background-clip: padding-box
+            border: 2.5px solid black
+            border-radius: 0.55rem
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+          .form-control
+            display: block
+            letter-spacing: 0.5px
+            width: 100%
+            height: 30px
+            margin-top: 4.5px
+            padding: 0.95rem 0.75rem
+            font-size: 1.4rem
+            line-height: 1.5
+            color: #495057
+            background-color: #fff
+            background-clip: padding-box
+            border: 2.5px solid black
+            border-radius: 0.55rem
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+            &:focus
+              border-color: black !important
+      div.form-header
+        hr
+          width: 85%
+          margin-left: 7.5%
+          margin-top: 7px
+          border: 1px solid white
+          box-shadow: 0px 8px 1px 0.5px #f2f2f2
+        div.row.progress-row
+          div.col-3
+            padding: 0
+        label
+          font-size: 15px
+          margin-bottom: 1px
+          transition: 0.6s ease
+        .progress
+          width: 100%
+          background-color: white
+          height: 7px
+          border: 0.5px solid
+          .progress-bar
+            background-color: $blue !important
+        h3
+          font-weight: normal
+.blocks.submit
+    height: 130px
+    button.form-button
+        margin-left: 41%
+        margin-top: 35px
+        height: 70px
+        /* margin-bottom: 105px; */
+        font-size: 36px
+        color: #FFFFFF
+        background-color: #3D5AFF
+        -webkit-transition: .3s ease
+        transition: .3s ease
+        cursor: pointer
+        padding: 4px 14px
+        font-size: 23px
+        font-weight: bold
+        border: 0
+        border-radius: 2px
+        width: 30%
+#first-left
+  margin-top: 58px
+  position: relative
+  p
+    margin-top: 125px
+    width: stretch
+    /* margin-left: 39%; */
+    left: 50px
+    text-align: -webkit-center
+    margin-bottom: 1rem
+    font-size: 18px
+    position: absolute
+  img
+    height: auto
+    width: 173%
+    position: absolute
+    left: 107%
+    top: 28px
+#first-right
+     margin-top: 60px
+     position: relative
+     p
+      position: absolute
+      margin-top: 146px
+      left: -164px
+      width: stretch
+      text-align: -webkit-center
+      margin-bottom: 1rem
+      font-size: 18px
+      color: black
+     img
+       height: auto
+       width: 126px
+       position: absolute
+       left: -85%
+       top: 224px
+#second-right
+   margin-top: 160px
+   position: relative
+   p
+    position: absolute
+    margin-top: 482px
+    left: -34%
+    width: stretch
+    text-align: -webkit-center
+    margin-bottom: 1rem
+    font-size: 18px
+    color: black
+   img
+     height: auto
+     width: 128px
+     position: absolute
+     left: -88%
+     top: 484px
+
+/* Laptop */
+@media only screen and (max-width : 1024px) and (min-width : 769px)
+  .blocks.submit button.form-button
+    height: 50px
+  .pop-up-info.second
+        font-size: 18px
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        width: 100%
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+        margin-bottom: 6px
+        border-radius: 0.25rem
+  .pop-up-info.first
+        font-size: 18px
+        border-radius: 0.25rem
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+  .post-create-form div.form-inputs .third .bot
+     padding-left: 33%
+  .blocks.submit button.form-button
+    margin-top: 33px
+  .post-create-form div.form-inputs .third .bot .customcheck input:checked ~ .checkmark
+     top: -2px
+  .post-create-form div.form-inputs .third .bot .customcheck
+    margin-top: 5px
+  .post-create-form div.form-inputs .third .selectors p
+    color: black
+    text-transform: uppercase
+    font-size: 20px
+    font-weight: 200
+    margin-left: 25px
+    margin-right: 25px
+    padding-left: 44%
+    margin-top: 10px
+    margin-bottom: 0
+  .post-create-form div.form-inputs .form-group.padding-left.cust
+      .comp-label
+        padding-left: 25%
+        margin-top: 4px
+  .post-create-form div.form-inputs .blocks .alert-danger
+      margin-top: 6px
+      margin-bottom: 6px
+  .post-create-form div.form-inputs .third
+    margin-top: 5px
+  .form-group.padding-left.date
+      .comp-label
+        padding-left: 33%
+        margin-top: 4px
+  .post-create-form div.form-inputs .second
+    margin-top: 5px
+  .top.more
+    .comp-label
+      padding-left: 31%
+  .comp-label
+    display: flex
+    padding-left: 34%
+  .post-create-form div.form-inputs .form-group.padding-left label
+    margin-top: 0
+    margin-bottom: 0
+    font-weight: 100
+  .post-create-form div.form-inputs
+    margin-top: 10px
+  i.icon.ion-md-information-circle-outline
+    margin-left: 6%
+    margin-top: 0px
+    font-size: 25px
+    margin-right: 4px
+    color: $blue
+  .col.text-center
+    display: flex
+    margin-top: 20px
+    i.icon.ion-md-information-circle-outline
+      margin-left: 36%
+
+      font-size: 25px
+      margin-right: 0
+      margin-top: 4.6px
+      /* margin-right: 4px; */
+      color: #3D5AFF
+  .post-create-form div.form-header label
+    margin-bottom: 2px
+  .form-group
+    margin-bottom: 0px
+  .form-header
+     box-shadow: -2px 3px 11px 1.5px #f2f2f2
+
+  .blocks.submit button.form-button
+    width: 50%
+    margin-left: 22.5%
+    border-radius: 7px
+    font-weight: 100
+    text-transform: uppercase
+  .post-create-form  div.form-inputs  .blocks  .input-header  h1
+    margin-bottom: 5px
+    font-size: 33px
+    margin-left: 0
+    font-weight: 200
+    text-transform: uppercase
+    text-align: center
+  .cust
+    display: block !important
+  .post-create-form
+    margin-top: 0
+    div.form-inputs .form-group.padding-left.cust
+    label.ng-tns-c8-0
+      width: 100% !important
+  .post-create-form div.form-header h3
+    font-size: 33px
+    padding-left: 5px
+  .row.progress-row.justify-content-center
+    div.col-3
+      flex: 0 0 80%
+      max-width: 31%
+      div.progress
+        border-radius: 50px
+        margin-bottom: 10px
+        height: 3px
+        background-color: #c3c7ce
+        border: unset
+        .progress-bar.bg-info
+          background-color: #3D5AFF !important
+          height: 6px !important
+          position: absolute
+          border-radius: 100px
+          bottom: 8.3px
+
+  .post-create-form div.form-inputs .blocks .categoryList
+    margin-top: 1px
+    margin-bottom: 0
+    margin-top: 2px
+    margin-bottom: 2px
+    position: relative
+    width: 100%
+    margin-left: 0
+
+  .post-create-form div.form-header hr
+    box-shadow: none
+  .post-create-form div.form-inputs .blocks .categoryList div
+    padding: 5px 5px
+    padding-right: 18px
+    i.icon.ion-md-close
+          top: 6.3px
+  .post-create-form div.form-inputs .divider-block
+    display: none
+  .container-fluid
+    overflow-x: hidden
+    padding: 0
+  .col-8.center-block
+    max-width: 100%
+    padding: 0
+    flex: 0 0 70%
+  #first-left,#second-left,#second-right,#first-right
+      display: none
+  .post-create-form div.form-inputs .form-group.padding-left.date
+      display: block
+  .post-create-form div.form-inputs .form-group.padding-left .top
+      display: block
+  .post-create-form div.form-inputs .blocks .input-header
+      margin-bottom: 0
+      margin-left: 0
+      img
+        display: none
+        left: 83px
+        width: 230px
+        top: -10px
+        height: 230px
+/* Tablet */
+@media only screen and (max-width : 768px) and (min-width : 481px)
+  .blocks.submit button.form-button
+    height: 50px
+  .pop-up-info.second
+        font-size: 18px
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        width: 100%
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+        margin-bottom: 6px
+        border-radius: 0.25rem
+  .pop-up-info.first
+        font-size: 18px
+        border-radius: 0.25rem
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+  .post-create-form div.form-inputs .third .bot
+     padding-left: 24%
+  .blocks.submit button.form-button
+    margin-top: 33px
+  .post-create-form div.form-inputs .third .bot .customcheck input:checked ~ .checkmark
+     top: -2px
+  .post-create-form div.form-inputs .third .bot .customcheck
+    margin-top: 5px
+  .post-create-form div.form-inputs .third .selectors p
+    color: black
+    text-transform: uppercase
+    font-size: 20px
+    font-weight: 200
+    margin-left: 25px
+    margin-right: 25px
+    padding-left: 40%
+    margin-top: 10px
+    margin-bottom: 0
+  .post-create-form div.form-inputs .form-group.padding-left.cust
+      .comp-label
+        padding-left: 15%
+        margin-top: 4px
+  .post-create-form div.form-inputs .blocks .alert-danger
+      margin-top: 6px
+      margin-bottom: 6px
+  .post-create-form div.form-inputs .third
+    margin-top: 5px
+  .form-group.padding-left.date
+      .comp-label
+        padding-left: 27%
+        margin-top: 4px
+  .post-create-form div.form-inputs .second
+    margin-top: 5px
+  .top.more
+    .comp-label
+      padding-left: 26%
+  .comp-label
+    display: flex
+    padding-left: 32%
+  .post-create-form div.form-inputs .form-group.padding-left label
+    margin-top: 0
+    margin-bottom: 0
+    font-weight: 100
+  .post-create-form div.form-inputs
+    margin-top: 10px
+  i.icon.ion-md-information-circle-outline
+    margin-left: 6%
+    margin-top: 0px
+    font-size: 25px
+    margin-right: 4px
+    color: $blue
+  .col.text-center
+    display: flex
+    margin-top: 20px
+    i.icon.ion-md-information-circle-outline
+      margin-left: 31%
+
+      font-size: 25px
+      margin-right: 0
+      margin-top: 4.6px
+      /* margin-right: 4px; */
+      color: #3D5AFF
+  .post-create-form div.form-header label
+    margin-bottom: 2px
+  .form-group
+    margin-bottom: 0px
+  .form-header
+     box-shadow: -2px 3px 11px 1.5px #f2f2f2
+
+  .blocks.submit button.form-button
+    width: 50%
+    margin-left: 22.5%
+    border-radius: 7px
+    font-weight: 100
+    text-transform: uppercase
+  .post-create-form  div.form-inputs  .blocks  .input-header  h1
+    margin-bottom: 5px
+    font-size: 33px
+    margin-left: 0
+    font-weight: 200
+    text-transform: uppercase
+    text-align: center
+  .cust
+    display: block !important
+  .post-create-form
+    margin-top: 0
+    div.form-inputs .form-group.padding-left.cust
+    label.ng-tns-c8-0
+      width: 100% !important
+  .post-create-form div.form-header h3
+    font-size: 33px
+    padding-left: 5px
+  .row.progress-row.justify-content-center
+    div.col-3
+      flex: 0 0 80%
+      max-width: 31%
+      div.progress
+        border-radius: 50px
+        margin-bottom: 10px
+        height: 3px
+        background-color: #c3c7ce
+        border: unset
+        .progress-bar.bg-info
+          background-color: #3D5AFF !important
+          height: 6px !important
+          position: absolute
+          border-radius: 100px
+          bottom: 8.3px
+
+  .post-create-form div.form-inputs .blocks .categoryList
+    margin-top: 1px
+    margin-bottom: 0
+    margin-top: 2px
+    margin-bottom: 2px
+    position: relative
+    width: 100%
+    margin-left: 0
+
+  .post-create-form div.form-header hr
+    box-shadow: none
+  .post-create-form div.form-inputs .blocks .categoryList div
+    padding: 5px 5px
+    padding-right: 18px
+    i.icon.ion-md-close
+          top: 6.3px
+  .post-create-form div.form-inputs .divider-block
+    display: none
+  .container-fluid
+    overflow-x: hidden
+    padding: 0
+  .col-8.center-block
+    max-width: 100%
+    padding: 0
+    flex: 0 0 70%
+  #first-left,#second-left,#second-right,#first-right
+      display: none
+  .post-create-form div.form-inputs .form-group.padding-left.date
+      display: block
+  .post-create-form div.form-inputs .form-group.padding-left .top
+      display: block
+  .post-create-form div.form-inputs .blocks .input-header
+      margin-bottom: 0
+      margin-left: 0
+      img
+        display: none
+        left: 83px
+        width: 230px
+        top: -10px
+        height: 230px
+/* bigger phone */
+@media only screen and (max-width : 480px)
+  .blocks.submit button.form-button
+    height: 50px
+  .pop-up-info.second
+        font-size: 18px
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        width: 100%
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+        margin-bottom: 6px
+        border-radius: 0.25rem
+  .pop-up-info.first
+        font-size: 18px
+        border-radius: 0.25rem
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+  .post-create-form div.form-inputs .third .bot
+     padding-left: 13%
+  .blocks.submit button.form-button
+    margin-top: 33px
+  .post-create-form div.form-inputs .third .bot .customcheck input:checked ~ .checkmark
+     top: -2px
+  .post-create-form div.form-inputs .third .bot .customcheck
+    margin-top: 5px
+  .post-create-form div.form-inputs .third .selectors p
+    color: black
+    text-transform: uppercase
+    font-size: 20px
+    font-weight: 200
+    margin-left: 25px
+    margin-right: 25px
+    padding-left: 38%
+    margin-top: 10px
+    margin-bottom: 0
+  .post-create-form div.form-inputs .form-group.padding-left.cust
+      .comp-label
+        padding-left: 0%
+        margin-top: 4px
+  .post-create-form div.form-inputs .blocks .alert-danger
+      margin-top: 6px
+      margin-bottom: 6px
+  .post-create-form div.form-inputs .third
+    margin-top: 5px
+  .form-group.padding-left.date
+      .comp-label
+        padding-left: 20%
+        margin-top: 4px
+  .post-create-form div.form-inputs .second
+    margin-top: 5px
+  .top.more
+    .comp-label
+      padding-left: 16%
+  .comp-label
+    display: flex
+    padding-left: 25%
+  .post-create-form div.form-inputs .form-group.padding-left label
+    margin-top: 0
+    margin-bottom: 0
+    font-weight: 100
+  .post-create-form div.form-inputs
+    margin-top: 10px
+  i.icon.ion-md-information-circle-outline
+    margin-left: 6%
+    margin-top: 0px
+    font-size: 25px
+    margin-right: 4px
+    color: $blue
+  .col.text-center
+    display: flex
+    margin-top: 20px
+    i.icon.ion-md-information-circle-outline
+      margin-left: 20%
+
+      font-size: 25px
+      margin-right: 0
+      margin-top: 4.6px
+      /* margin-right: 4px; */
+      color: #3D5AFF
+  .post-create-form div.form-header label
+    margin-bottom: 2px
+  .form-group
+    margin-bottom: 0px
+  .form-header
+     box-shadow: -2px 3px 11px 1.5px #f2f2f2
+
+  .blocks.submit button.form-button
+    width: 70%
+    margin-left: 14.5%
+    border-radius: 7px
+    font-weight: 100
+    text-transform: uppercase
+  .post-create-form  div.form-inputs  .blocks  .input-header  h1
+    margin-bottom: 5px
+    font-size: 33px
+    margin-left: 0
+    font-weight: 200
+    text-transform: uppercase
+    text-align: center
+  .cust
+    display: block !important
+  .post-create-form
+    margin-top: 0
+    div.form-inputs .form-group.padding-left.cust
+    label.ng-tns-c8-0
+      width: 100% !important
+  .post-create-form div.form-header h3
+    font-size: 33px
+    padding-left: 5px
+  .row.progress-row.justify-content-center
+    div.col-3
+      flex: 0 0 80%
+      max-width: 51%
+      div.progress
+        border-radius: 50px
+        margin-bottom: 10px
+        height: 3px
+        background-color: #c3c7ce
+        border: unset
+        .progress-bar.bg-info
+          background-color: #3D5AFF !important
+          height: 6px !important
+          position: absolute
+          border-radius: 100px
+          bottom: 8.3px
+
+  .post-create-form div.form-inputs .blocks .categoryList
+    margin-top: 1px
+    margin-bottom: 0
+    margin-top: 2px
+    margin-bottom: 2px
+    position: relative
+    width: 100%
+    margin-left: 0
+
+  .post-create-form div.form-header hr
+    box-shadow: none
+  .post-create-form div.form-inputs .blocks .categoryList div
+    padding: 5px 5px
+    padding-right: 18px
+    i.icon.ion-md-close
+          top: 6.3px
+  .post-create-form div.form-inputs .divider-block
+    display: none
+  .container-fluid
+    overflow-x: hidden
+    padding: 0
+  .col-8.center-block
+    max-width: 100%
+    padding: 0
+    flex: 0 0 70%
+  #first-left,#second-left,#second-right,#first-right
+      display: none
+  .post-create-form div.form-inputs .form-group.padding-left.date
+      display: block
+  .post-create-form div.form-inputs .form-group.padding-left .top
+      display: block
+  .post-create-form div.form-inputs .blocks .input-header
+      margin-bottom: 0
+      margin-left: 0
+      img
+        display: none
+        left: 83px
+        width: 230px
+        top: -10px
+        height: 230px
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+  .blocks.submit button.form-button
+    height: 50px
+  .pop-up-info.second
+        font-size: 18px
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        width: 100%
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+        margin-bottom: 6px
+        border-radius: 0.25rem
+  .pop-up-info.first
+        font-size: 18px
+        border-radius: 0.25rem
+        background-color: #d9ebffde
+        height: auto
+        padding-top: 10px
+        padding-bottom: 10px
+        z-index: 1
+        padding: 10px 20px
+        border: 2px solid #b1bbff
+  .blocks.submit button.form-button
+    margin-top: 33px
+  .post-create-form div.form-inputs .third .bot .customcheck input:checked ~ .checkmark
+     top: -2px
+  .post-create-form div.form-inputs .third .bot .customcheck
+    margin-top: 5px
+  .post-create-form div.form-inputs .third .selectors p
+    color: black
+    text-transform: uppercase
+    font-size: 20px
+    font-weight: 200
+    margin-left: 25px
+    margin-right: 25px
+    padding-left: 35%
+    margin-top: 10px
+    margin-bottom: 0
+  .post-create-form div.form-inputs .form-group.padding-left.cust
+      .comp-label
+        padding-left: 15%
+        margin-top: 4px
+  .post-create-form div.form-inputs .blocks .alert-danger
+      margin-top: 6px
+      margin-bottom: 6px
+  .post-create-form div.form-inputs .third
+    margin-top: 5px
+  .form-group.padding-left.date
+      .comp-label
+        padding-left: 13%
+        margin-top: 4px
+  .post-create-form div.form-inputs .second
+    margin-top: 5px
+  .top.more
+    .comp-label
+      padding-left: 7%
+  .comp-label
+    display: flex
+    padding-left: 20%
+  .post-create-form div.form-inputs .form-group.padding-left label
+    margin-top: 0
+    margin-bottom: 0
+    font-weight: 100
+  .post-create-form div.form-inputs
+    margin-top: 10px
+  i.icon.ion-md-information-circle-outline
+    margin-left: 6%
+    margin-top: 0px
+    font-size: 25px
+    margin-right: 4px
+    color: $blue
+  .col.text-center
+    display: flex
+    margin-top: 20px
+    i.icon.ion-md-information-circle-outline
+      margin-left: 5%
+      margin-top: 6px
+      font-size: 25px
+      margin-right: 0
+      /* margin-right: 4px; */
+      color: #3D5AFF
+  .post-create-form div.form-header label
+    margin-bottom: 2px
+  .form-group
+    margin-bottom: 0px
+  .form-header
+     box-shadow: -2px 3px 11px 1.5px #f2f2f2
+
+  .blocks.submit button.form-button
+    width: 74%
+    margin-left: 13%
+    border-radius: 7px
+    font-weight: 100
+    text-transform: uppercase
+  .post-create-form  div.form-inputs  .blocks  .input-header  h1
+    margin-bottom: 5px
+    font-size: 33px
+    margin-left: 0
+    font-weight: 200
+    text-transform: uppercase
+    text-align: center
+  .cust
+    display: block !important
+  .post-create-form
+    margin-top: 0
+    div.form-inputs .form-group.padding-left.cust
+    label.ng-tns-c8-0
+      width: 100% !important
+  .post-create-form div.form-header h3
+    font-size: 33px
+    padding-right: 7px
+    width: 100%
+  .row.progress-row.justify-content-center
+    div.col-3
+      flex: 0 0 80%
+      max-width: 90%
+      div.progress
+        border-radius: 50px
+        margin-bottom: 10px
+        height: 3px
+        background-color: #c3c7ce
+        border: unset
+        .progress-bar.bg-info
+          background-color: #3D5AFF !important
+          height: 6px !important
+          position: absolute
+          border-radius: 100px
+          bottom: 8.3px
+
+  .post-create-form div.form-inputs .blocks .categoryList
+    margin-top: 1px
+    margin-bottom: 0
+    margin-top: 2px
+    margin-bottom: 2px
+    position: relative
+    width: 100%
+    margin-left: 0
+
+  .post-create-form div.form-header hr
+    box-shadow: none
+  .post-create-form div.form-inputs .blocks .categoryList div
+    padding: 5px 5px
+    padding-right: 18px
+    i.icon.ion-md-close
+          top: 6.3px
+  .post-create-form div.form-inputs .divider-block
+    display: none
+  .container-fluid
+    overflow-x: hidden
+    padding: 0
+  .col-8.center-block
+    max-width: 100%
+    padding: 0
+    flex: 0 0 85%
+  #first-left,#second-left,#second-right,#first-right
+      display: none
+  .post-create-form div.form-inputs .form-group.padding-left.date
+      display: block
+  .post-create-form div.form-inputs .form-group.padding-left .top
+      display: block
+  .post-create-form div.form-inputs .blocks .input-header
+      margin-bottom: 0
+      margin-left: 0
+      img
+        display: none
+        left: 83px
+        width: 230px
+        top: -10px
+        height: 230px

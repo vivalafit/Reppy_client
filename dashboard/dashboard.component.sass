@@ -1,0 +1,33 @@
+@import '../../../sass-utilities/variables'
+@import '../../../sass-utilities/animations'
+
+.dashboard-content
+  background-color: $block-background
+  border-top-left-radius: $border-radius
+  border-top-right-radius: $border-radius
+  box-shadow: $box-shadow-down
+  margin-top: 40px
+  margin-bottom: 85px
+  width: 100%
+  padding: 40px
+
+.reppy-rate-wrapper, .reviews-wrapper
+  text-align: center
+  a.edit-prof
+    position: absolute
+    top: 9px
+    right: 60px
+
+
+.switch-wrapper
+  cursor: pointer
+  display: flex
+  justify-content: space-around
+  font-size: 16px
+  padding: 15px 80px
+  padding-bottom: 5px
+  margin-top: 5px
+  .work, .hire
+    padding: 0 15px
+  ngx-switch
+    padding: 2px 0

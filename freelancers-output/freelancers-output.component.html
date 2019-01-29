@@ -1,0 +1,39 @@
+<div *ngFor="let freelancer of freelancers">
+  <div class="post">
+    <div class="row">
+      <div class="col-md-2 justify-content-md-center" >
+        <div class="freelancer">
+          <ngx-pie [url]="freelancer?.avatar ? (env.api + formatPath(freelancer.avatar[0].path)) : ('../assets/Images/default-user.png')" [percentage] = "freelancer.rating" [size] = "avatarSize" (window:resize)="changeAvatarSize()"></ngx-pie>
+          <h6><span>{{freelancer.review.length}}</span> отзывов</h6>
+        </div>
+      </div>
+      <div class="col-md-7" >
+        <div class="info">
+          <h3>
+            <letter-color [size]="14" [word]="freelancer.name"></letter-color>,   <i class="icon ion-md-pin"></i><letter-color [size]="14" [word]="freelancer?.location.city"></letter-color>
+          </h3>
+          <div class="category">
+            <div *ngFor="let category of freelancer.categories">{{category.title}}</div>
+          </div>
+          <div  *ngIf="freelancer?.description"  class="description">
+             {{freelancer.description}}
+          </div>
+          <div  *ngIf="freelancer?.description==null"  class="description">
+                  Описание отсутствует
+          </div>
+          <div class="additional-content">
+            <div>109 работ</div><div>5 лет с порталом</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 hire-padding" >
+        <div (click)="openPopUp(freelancer.id)" class="hire">
+          Отправить обьявление
+        </div>
+        <div routerLink="/home" class="look">
+          Посмотреть профиль
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

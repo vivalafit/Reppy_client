@@ -1,0 +1,229 @@
+<div class="posts-wrapper">
+    <div class="row">
+        <div class="col-md-8">
+            <hr>
+            <div class="butts-wrapper">
+                <button [ngClass]="{'post-button': true, 'active': postMode === 'active'}" (click)="setButton('active')">
+                    Активные(<span [ngClass]="{'accent': active?.length}">{{active?.length}}</span>)
+                </button>
+                <button [ngClass]="{'post-button': true, 'active': postMode === 'completed'}" (click)="setButton('completed')">
+                    Выполненые(<span [ngClass]="{'accent': completed?.length}">{{completed?.length}}</span>)
+                </button>
+                <button [ngClass]="{'post-button': true, 'active': postMode === 'request'}" (click)="setButton('request')">
+                    Мои заявки(<span [ngClass]="{'accent': request?.length}">{{request?.length}}</span>)
+                </button>
+                <button [ngClass]="{'post-button': true, 'active': postMode === 'offer'}" (click)="setButton('offer')">
+                    Предложения(<span [ngClass]="{'accent': offers?.length}">{{offers?.length}}</span>)
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper" >
+          <div class="active-posts" *ngIf="postMode === 'active' && active">
+            <div class="post-wrap" *ngFor="let post of active">
+                <hr>
+                <div class="post container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="post-title"><letter-color [size]="18" [word]="post.title + ','"></letter-color>
+                                                    <span class="location">
+                                                        <i class="icon ion-md-pin"></i>
+                                                        <letter-color [size]="13" [word]=post.location.city></letter-color> <span class="date">{{post.createdAt | date:'dd.MM.yyyy'}}</span>
+                                                          <div class="tell">{{post.executor.tel}}</div>
+                                                    </span>
+                            </h3>
+                            <div class="category">
+                              <div *ngFor="let cat of post.category">{{cat.title}}</div>
+                            </div>
+                            <div class="description">
+                                <p class="post-description">
+                                    {{post.description}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <ngx-pie [url]="post?.executor.avatar ? (env.api + formatPath(post.executor.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="60" [percentage]="post?.executor?.rating"></ngx-pie>
+                        </div>
+                        <div class="col-md-2">
+                            <button (click)="showPost(post)" class="blue-butt">
+                                Посмотреть
+                            </button>
+                            <button (click)="createReview(post)" *ngIf="post?.endedByExecutor === true" class="blue-butt">
+                                Оставить отзыв
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-posts" *ngIf="postMode === 'active' && active && !active.length" style="text-align: center;">
+            <hr>
+            Активные заказы отсутствуют
+        </div>
+        <div class="completed-posts" *ngIf="postMode === 'completed' && completed">
+            <div class="post-wrap" *ngFor="let post of completed">
+                <hr>
+                <div class="post container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3 class="post-title"><letter-color [size]="18" [word]="post.title + ','"></letter-color>
+                                                    <span class="location">
+                                                        <i class="icon ion-md-pin"></i>
+                                                        <letter-color [size]="13" [word]=post.location.city></letter-color> <span class="date">{{post.createdAt | date:'dd.MM.yyyy'}}</span>
+                                                    </span>
+
+                            </h3>
+                            <div class="category">
+
+                            </div>
+                            <div class="description">
+                                <p class="post-description">
+                                    {{post.description}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <ngx-pie [url]="post?.executor.avatar ? (env.api + formatPath(post.executor.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="60" [percentage]="post?.executor?.rating"></ngx-pie>
+                        </div>
+                        <div class="col-md-2">
+                            <button (click)="showPost(post)" class="blue-butt">
+                                Посмотреть
+                            </button>
+                            <button (click)="createReview(post)" class="blue-butt">
+                                Оставить отзыв
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-posts" *ngIf="postMode === 'completed' && completed && !completed.length" style="text-align: center;">
+            <hr>
+            Выполненые заказы отсутствуют
+        </div>
+        <div class="request-posts" *ngIf="postMode === 'request' && request">
+            <div class="post-wrap" *ngFor="let post of request; let first = first;">
+                <hr [ngClass]="{'first': first}">
+                <div class="post container-fluid">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="post-title"><letter-color [size]="18" [word]="post.title + ','"></letter-color>
+                                                    <span class="location">
+                                                        <i class="icon ion-md-pin"></i>
+                                                        <letter-color [size]="13" [word]=post.location.city></letter-color> <span class="date">{{post.createdAt | date:'dd.MM.yyyy'}}</span>
+                                                    </span>
+                            </h3>
+                            <div class="category">
+                              <div *ngFor="let cat of post.category">{{cat.title}}</div>
+                            </div>
+                            <div class="description">
+                                <p class="post-description">
+                                    {{post.description}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button (click)="showPost(post)" class="blue-butt">
+                                Посмотреть
+                            </button>
+                            <button (click)="editPost(post)" class="blue-butt">
+                                Редактировать
+                            </button>
+                        </div>
+                    </div>
+                    <div class="requests-wrapper" *ngIf="post.request && post.request.length">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h4>Предложения:</h4>
+                            </div>
+                            <div class="col-md-10">
+
+                                <div class="request" *ngFor="let request of post.request">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-1">
+                                            <div class="request-avatar">
+                                                  <ngx-pie [url]="request?.user?.avatar ? (env.api + formatPath(request.user.avatar[0].path)) : ('../assets/Images/default-user.png')" [size]="60" [percentage]="post?.executor?.rating"></ngx-pie>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="request-description">{{request.comment}}</p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button (click)="openPopUp(post.id,request.userId)" class="request-butt">
+                                                Нанять
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-posts" *ngIf="postMode === 'request' && request && !request.length" style="text-align: center;">
+            <hr>
+            Предложения отсутствуют
+        </div>
+        <div class="offered-posts" *ngIf="postMode === 'offer' && offers ">
+            <div class="post-wrap" *ngFor="let post of offers">
+                <hr>
+                <div class="post container-fluid">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="post-title"><letter-color [size]="18" [word]="post.title + ','"></letter-color>
+                                                    <span class="location">
+                                                        <i class="icon ion-md-pin"></i>
+                                                        <letter-color [size]="13" [word]=post.location.city></letter-color> <span class="date">{{post.createdAt | date:'dd.MM.yyyy'}}</span>
+                                                    </span>
+                            </h3>
+                            <div class="category">
+                              <div *ngFor="let cat of post.category">{{cat.title}}</div>
+                            </div>
+                            <div class="description">
+                                <p class="post-description">
+                                    {{post.description}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button (click)="cancelOffer(post.id)" class="blue-butt">
+                                Отменить
+                            </button>
+                            <button (click)="showPost(post)" class="blue-butt">
+                                Посмотреть
+                            </button>
+                        </div>
+                    </div>
+                  <div class="requests-wrapper" *ngIf="post.request.length>0">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <h4>Комментарий:</h4>
+                      </div>
+                      <div class="col-md-10">
+                        <div class="request">
+                          <hr>
+                          <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-6">
+                              <p class="request-description">{{post.request[0].comment}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-posts" *ngIf="postMode === 'offer' && offers && !offers.length" style="text-align: center;">
+            <hr>
+            Предложения отсутствуют
+        </div>
+        <hr>
+    </div>
+</div>
